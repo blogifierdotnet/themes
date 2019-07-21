@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostListComponent } from './shared/post-list/post-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    PostsComponent
+    PostsComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,

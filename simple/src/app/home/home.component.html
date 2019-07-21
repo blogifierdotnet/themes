@@ -1,22 +1,7 @@
-<div *ngIf="vm">
-    <div *ngFor="let post of vm.posts" style="margin-bottom: 20px">
-        <h2>{{ post.title }}</h2>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">Posted by <a href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ toDate(post.published) }}</li>
-            </ol>
-        </nav>
-        <article>
-            <div [innerHTML]="post.description"></div>
-        </article>
-        <button type="button" (click)="getPost(post.id)" class="btn btn-secondary">Read more</button>
-    </div>
-</div>
-
+<post-list></post-list>
 <div class="row">
     <div class="col">
-        © 2018 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+        © 2019 Copyright: <a href="/"> {{ blogSettings.title }}</a>
     </div>
     <div class="col text-right">
         <ul class="navbar-nav flex-grow">
