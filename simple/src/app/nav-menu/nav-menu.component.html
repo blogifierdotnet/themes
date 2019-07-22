@@ -8,12 +8,11 @@
       </button>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
 
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="form-inline my-2 my-lg-0">
+          <input name="term" ngModel class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-secondary my-2 my-sm-0">Search</button>
         </form>
 
-        
       </div>
     </div>
   </nav>
