@@ -14,28 +14,29 @@ import { IBlogSettings } from './blog-settings';
 export class BlogService {
     public postList: IPostList;
     public blogSettings: IBlogSettings;
-    public author: string;
-    public page: string;
-
-    public postsUrl: string;
     public settingsUrl: string;
     public searchUrl: string;
 
     constructor(private http: HttpClient, private route: ActivatedRoute) {
-        this.author = this.route.snapshot.queryParamMap.get('author');
-        this.page = this.route.snapshot.queryParamMap.get('page');
-        if(!this.page){ this.page = '1' }
-
         this.searchUrl = environment.apiEndpoint + '/posts/search/';
-
-        this.postsUrl = environment.apiEndpoint + '/posts?page=' + this.page;
         this.settingsUrl = environment.apiEndpoint + '/settings';
-    
-        if(this.author){ this.postsUrl += '&author=' + this.author; }
     }
 
     getPosts(): Observable<IPostList> {
-        return this.http.get<IPostList>(this.postsUrl).pipe(
+
+        var url = environment.apiEndpoint + '/posts?page=1';
+        var page = this.route.snapshot.queryParamMap.get('page');
+        var author = this.route.snapshot.queryParamMap.get('author');
+
+        if(page){
+          url = environment.apiEndpoint + '/posts?page=' + page;
+        }
+
+        if(author){
+          url += '&author=' + author;
+        }
+
+        return this.http.get<IPostList>(url).pipe(
           tap(data => console.log('Posts: ' + JSON.stringify(data))),
           catchError(this.handleError)
         );

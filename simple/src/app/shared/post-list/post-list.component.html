@@ -13,3 +13,10 @@
         <button type="button" (click)="getPost(post.id)" class="btn btn-secondary">Read more</button>
     </div>
 </div>
+<div *ngIf="vm && vm.pager && (vm.pager.showNewer || vm.pager.showOlder)">
+    <ul class="pagination">
+        <li *ngIf="vm.pager.showOlder" class="page-item"><a class="page-link" href="?page={{vm.pager.older}}">❮ Older</a></li>
+        <li class="page-item"><a class="page-link" href="#">{{ vm.pager.currentPage }}</a></li>
+        <li *ngIf="vm.pager.showNewer" class="page-item"><a class="page-link" href="?page={{vm.pager.newer}}">Newer ❯</a></li>
+    </ul>
+</div>
