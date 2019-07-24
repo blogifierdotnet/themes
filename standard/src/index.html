@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Blogifier</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <meta name="description" content="Short blog description">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700|Merriweather:700" rel="stylesheet">
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/css/prism.css" rel="stylesheet">
+  <link href="assets/css/styles.min.css?v=N2fp9ItIPyskASedeXaANCjJD53Z6biDhLoXVZUcZZ0" rel="stylesheet">
+</head>
+<body>
+  <!--[if lt IE 10]>
+  <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <header class="blog-header d-flex flex-column">
+    <div class="container d-flex">
+      <a href="/blogifier/" class="blog-logo my-auto d-flex">
+        <img src="assets/img/logo-white.png" alt="Blog Title" class="my-auto" />
+      </a>
+      <ul class="blog-social nav ml-auto my-auto">
+        <li class="blog-social-item"><a href="https://www.facebook.com/blogifierdotnet" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-facebook-official"></i></a></li>
+        <li class="blog-social-item"><a href="/feed/rss" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-rss-square"></i></a></li>
+      </ul>
+      <button class="blog-search-toggle btn-unstyled" type="button" data-toggle="modal" data-target="#blog-search">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </header>
+
+  <app-root></app-root>
+
+  <div class="modal fade blog-search" id="blog-search" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <form role="search" asp-controller="Blog" asp-action="Index" method="post">
+            <input type="search" id="term" name="term" class="form-control form-control-lg" placeholder="Search..." autocomplete="off">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="blog-footer">
+    <div class="container d-lg-flex text-center text-lg-left">
+      <p>Copyright © 2019. Powered by <a href="https://github.com/blogifierdotnet/Blogifier" data-toggle="tooltip" target="_blank" title="Version - 2.4.0.0">Blogifier</a>. Designed by <a href="https://francis.bio/" target="_blank" rel="nofollow">Francis</a>.</p>
+      <div class="ml-auto">
+        <a href="admin">Login</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/prism.js"></script>
+  <script src="assets/js/blog.js?v=eAwtYqamkiC-C1pFdDEem0ctIpConpXiU690T4VFYts"></script>
+</body>
+</html>
