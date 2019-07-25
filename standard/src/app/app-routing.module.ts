@@ -7,7 +7,7 @@ import { PostsComponent } from './posts/posts.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, 
-  { path: 'posts/:id', component: PostsComponent }
+  { path: 'posts/:slug', component: PostsComponent }
 ];
 
 @NgModule({

@@ -21,9 +21,8 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body p-0">
-        <form role="search" asp-controller="Blog" asp-action="Index" method="post">
-          <input type="search" id="term" name="term" class="form-control form-control-lg" placeholder="Search..."
-            autocomplete="off">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <input type="search" id="term" name="term" ngModel class="form-control form-control-lg" placeholder="Search..." autocomplete="off" autofocus>
         </form>
       </div>
     </div>
