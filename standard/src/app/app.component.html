@@ -7,11 +7,25 @@
       <li class="blog-social-item"><a href="https://www.facebook.com/blogifierdotnet" target="_blank"
           class="blog-social-link"><i class="blog-social-icon fa fa-facebook-official"></i></a></li>
       <li class="blog-social-item"><a href="/feed/rss" target="_blank" class="blog-social-link"><i
-            class="blog-social-icon fa fa-rss-square"></i></a></li>
+          class="blog-social-icon fa fa-rss-square"></i></a></li>
     </ul>
     <button class="blog-search-toggle btn-unstyled" type="button" data-toggle="modal" data-target="#blog-search">
       <i class="fa fa-search"></i>
     </button>
   </div>
 </header>
+
 <router-outlet></router-outlet>
+
+<div class="modal fade blog-search" id="blog-search" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <form role="search" asp-controller="Blog" asp-action="Index" method="post">
+          <input type="search" id="term" name="term" class="form-control form-control-lg" placeholder="Search..."
+            autocomplete="off">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,29 +17,7 @@
   <!--[if lt IE 10]>
   <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-  <app-root *ngIf="blogSettings"></app-root>
-
-  <div class="modal fade blog-search" id="blog-search" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body p-0">
-          <form role="search" asp-controller="Blog" asp-action="Index" method="post">
-            <input type="search" id="term" name="term" class="form-control form-control-lg" placeholder="Search..." autocomplete="off">
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer *ngIf="blogSettings" class="blog-footer">
-    <div class="container d-lg-flex text-center text-lg-left">
-      <p>Copyright © 2019. Powered by <a href="https://github.com/blogifierdotnet/Blogifier" data-toggle="tooltip" target="_blank" title="Version - 2.4.0.0">Blogifier</a>. Designed by <a href="https://francis.bio/" target="_blank" rel="nofollow">Francis</a>.</p>
-      <div class="ml-auto">
-        <a href="admin">Login</a>
-      </div>
-    </div>
-  </footer>
-
+  <app-root></app-root>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>

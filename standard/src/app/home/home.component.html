@@ -6,28 +6,43 @@
 </div>
 
 <div class="page-content">
-  <div class="container">
-    <article class="post">
+  <div *ngIf="postList" class="container">
+    <article *ngFor="let post of postList.posts" class="post">
       <div class="post-cover">
-        <img src="assets/img/cover-desk.jpg" alt="Welcome to Blogifier!">
-        <span class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
+        <img src="assets/img/cover-desk.jpg" alt="post.title">
+        <span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
       </div>
-      <h2 class="post-title"><a href="/blogifier/posts/welcome-to-blogifier!">Welcome to Blogifier!</a></h2>
+      <h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
       <div class="post-meta">
-        <a class="post-meta-author" href="/blogifier/authors/admin">Administrator</a>
-        <time class="post-meta-time">/ September 11, 2018</time>
+        <a class="post-meta-author" href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a>
+        <time class="post-meta-time">/ {{toDate(post.published)}}</time>
       </div>
-      <div class="post-description">
-        <p>Blogifier is simple, beautiful, light-weight open source blog written in .NET Core. This
-          cross-platform, highly extendable and customizable web application brings all the best blogging
-          features in small, portable package.</p>
-        <h4>To login:</h4>
-        <ul>
-          <li>User: demo</li>
-          <li>Pswd: demo</li>
-        </ul>
-      </div>
-      <a class="post-more btn btn-rounded btn-dark" href="posts/welcome-to-blogifier!">Read</a>
+      <div [innerHTML]="post.description" class="post-description"></div>
+      <a class="post-more btn btn-rounded btn-dark" href="posts/{{post.slug}}">Read</a>
     </article>
   </div>
 </div>
+
+<ul *ngIf="postList && (postList.pager.showNewer || postList.pager.showOlder)" class="pagination justify-content-center">
+  <li *ngIf="postList.pager.showOlder" class="item item-prev">
+    <a class="item-link" href="?page={{postList.pager.older}}">
+      <i class="item-icon fa fa-angle-left"></i>
+    </a>
+  </li>
+  <li *ngIf="postList.pager.showNewer" class="item item-next">
+    <a class="item-link" href="?page={{postList.pager.newer}}">
+      <i class="item-icon fa fa-angle-right"></i>
+    </a>
+  </li>
+</ul>
+
+<footer *ngIf="postList" class="blog-footer">
+  <div class="container d-lg-flex text-center text-lg-left">
+    <p>Copyright © 2019. Powered by <a href="https://github.com/blogifierdotnet/Blogifier" data-toggle="tooltip"
+        target="_blank" title="Version - 2.4.0.0">Blogifier</a>. Designed by <a href="https://francis.bio/"
+        target="_blank" rel="nofollow">Francis</a>.</p>
+    <div class="ml-auto">
+      <a href="admin">Login</a>
+    </div>
+  </div>
+</footer>
