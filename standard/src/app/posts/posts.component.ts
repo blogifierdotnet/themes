@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { BlogService } from '../core/blog.service';
-import { IBlogSettings, IBlogPost } from '../core/blog.models';
+import { IBlogSettings, IPostModel } from '../core/blog.models';
 
 @Component({
   selector: 'app-posts',
@@ -10,7 +10,7 @@ import { IBlogSettings, IBlogPost } from '../core/blog.models';
 })
 export class PostsComponent implements OnInit {
   public blogSettings: IBlogSettings;
-  public blogPost: IBlogPost;
+  public postModel: IPostModel;
   errorMessage = '';
 
   constructor(private blogService: BlogService, private route: ActivatedRoute) { }
@@ -24,7 +24,7 @@ export class PostsComponent implements OnInit {
     var slug = this.route.snapshot.paramMap.get('slug');
     if(slug){
       this.blogService.getPost(slug).subscribe(
-        result => { this.blogPost = result; },
+        result => { this.postModel = result; },
         error => this.errorMessage = <any>error
       );
     }

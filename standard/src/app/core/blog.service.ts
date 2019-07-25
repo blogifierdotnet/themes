@@ -5,16 +5,12 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
-import { IPostList, IBlogPost, IBlogSettings } from './blog.models';
+import { IPostList, IPostModel, IBlogSettings } from './blog.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
-  public postList: IPostList;
-  public blogPost: IBlogPost;
-  public blogSettings: IBlogSettings;
-
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   getPosts(): Observable<IPostList> {
@@ -47,9 +43,9 @@ export class BlogService {
     }
   }
 
-  getPost(slug: string): Observable<IBlogPost>{
-    var url = environment.apiEndpoint + '/posts/' + slug;
-    return this.http.get<IBlogPost>(url).pipe(
+  getPost(slug: string): Observable<IPostModel>{
+    var url = environment.apiEndpoint + '/posts/byslug/' + slug;
+    return this.http.get<IPostModel>(url).pipe(
       tap(data => console.log('Blog post: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );

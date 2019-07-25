@@ -35,3 +35,11 @@ export interface IPostList {
     posts: IBlogPost[];
     pager: IPager;
 }
+
+export interface IPostModel
+{
+    blog:  IBlogSettings;
+    post: IBlogPost;
+    older: IBlogPost;
+    newer: IBlogPost;
+}

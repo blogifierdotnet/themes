@@ -1,13 +1,13 @@
-<article class="post-single">
+<article *ngIf="postModel" class="post-single">
   <div class="post-cover" style="background-image: url('assets/img/cover-desk.jpg')"></div>
   <section class="container">
     <div class=" post-body">
       <header class="post-header">
-        <h2 class="post-title">Welcome to Blogifier!</h2>
+        <h2 class="post-title">{{postModel.post.title}}</h2>
         <div class="post-meta">
-          <a href="/blogifier/authors/admin">
-            <img class="post-meta-img" src="assets/img/avatar.png" alt="Administrator" />
-            <span class="post-meta-author">Administrator</span>
+          <a href="?author={{postModel.post.author.appUserName}}">
+            <img class="post-meta-img" src="assets/img/avatar.png" alt="{{postModel.post.author.displayName}}" />
+            <span class="post-meta-author">{{postModel.post.author.displayName}}</span>
           </a>
           <time class="post-meta-time">Sep 11, 2018</time>
           <span>/</span>
@@ -19,36 +19,17 @@
           </span>
         </div>
       </header>
-      <div class="post-content">
-        <h2>What is Blogifier</h2>
-        <p>Blogifier is simple, beautiful, light-weight open source blog written in .NET Core. This cross-platform,
-          highly extendable and customizable web application brings all the best blogging features in small, portable
-          package.</p>
-        <h2>System Requirements</h2>
-        <ul>
-          <li>Windows, Mac or Linux</li>
-          <li>ASP.NET Core 2.1</li>
-          <li>Visual Studio 2017, VS Code or other code editor (Atom, Sublime etc)</li>
-          <li>SQLite by default, MS SQL Server tested, EF compatible databases should work</li>
-        </ul>
-        <h2>Getting Started</h2>
-        <ol>
-          <li>Clone or download source code</li>
-          <li>Run application in Visual Studio or using your code editor</li>
-          <li>Use admin/admin to log in as admininstrator</li>
-          <li>Use demo/demo to log in as user</li>
-        </ol>
-        <h2>Demo site</h2>
-        <p>The <a href="http://blogifier.azurewebsites.net">demo site</a> is a playground to check out Blogifier
-          features. You can write and publish posts, upload files and test application before install. And no worries,
-          it is just a sandbox and will clean itself.</p>
+      <div [innerHTML]="postModel.post.content" class="post-content"></div>
 
-      </div>
-
-      <ul class="pagination justify-content-center">
-        <li class="item item-prev">
-          <a class="item-link" href="/" title="New demo post">
+      <ul *ngIf="postModel.older || postModel.newer" class="pagination justify-content-center">
+        <li *ngIf="postModel.older" class="item item-prev">
+          <a class="item-link" href="posts/{{postModel.older.slug}}" title="{{postModel.older.title}}">
             <i class="item-icon fa fa-angle-left"></i>
+          </a>
+        </li>
+        <li *ngIf="postModel.newer" class="item item-next">
+          <a class="item-link" href="posts/{{postModel.newer.slug}}" title="posts/{{postModel.newer.title}}">
+            <i class="item-icon fa fa-angle-right"></i>
           </a>
         </li>
       </ul>
@@ -56,7 +37,7 @@
   </section>
 </article>
 
-<footer class="blog-footer">
+<footer *ngIf="postModel" class="blog-footer">
   <div class="container d-lg-flex text-center text-lg-left">
     <p>Copyright © 2019. Powered by <a href="https://github.com/blogifierdotnet/Blogifier" data-toggle="tooltip"
         target="_blank" title="Version - 2.4.0.0">Blogifier</a>. Designed by <a href="https://francis.bio/"
