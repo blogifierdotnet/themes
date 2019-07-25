@@ -1,50 +1,33 @@
-<header class="blog-header d-flex flex-column">
-    <div class="container d-flex">
-        <a href="/blogifier/" class="blog-logo my-auto d-flex">
-            <img src="assets/img/logo-white.png" alt="Blog Title" class="my-auto" />
-        </a>
-        <ul class="blog-social nav ml-auto my-auto">
-            <li class="blog-social-item"><a href="https://www.facebook.com/blogifierdotnet" target="_blank"
-                    class="blog-social-link"><i class="blog-social-icon fa fa-facebook-official"></i></a></li>
-            <li class="blog-social-item"><a href="/feed/rss" target="_blank" class="blog-social-link"><i
-                        class="blog-social-icon fa fa-rss-square"></i></a></li>
-        </ul>
-        <button class="blog-search-toggle btn-unstyled" type="button" data-toggle="modal" data-target="#blog-search">
-            <i class="fa fa-search"></i>
-        </button>
-    </div>
-</header>
-
-<div class="page-cover" style="background-image: url('assets/img/cover-desk.jpg')">
-    <h1 class="page-cover-title">
-        <a href="/blogifier/">Blog Title</a>
-    </h1>
-    <p class="page-cover-desc">Short blog description</p>
+<div *ngIf="blogSettings" class="page-cover" style="background-image: url('assets/img/cover-desk.jpg')">
+  <h1 class="page-cover-title">
+    <a href="/">{{blogSettings.title}}</a>
+  </h1>
+  <p class="page-cover-desc">{{blogSettings.description}}</p>
 </div>
 
 <div class="page-content">
-    <div class="container">
-        <article class="post">
-            <div class="post-cover">
-                <img src="assets/img/cover-desk.jpg" alt="Welcome to Blogifier!">
-                <span class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
-            </div>
-            <h2 class="post-title"><a href="/blogifier/posts/welcome-to-blogifier!">Welcome to Blogifier!</a></h2>
-            <div class="post-meta">
-                <a class="post-meta-author" href="/blogifier/authors/admin">Administrator</a>
-                <time class="post-meta-time">/ September 11, 2018</time>
-            </div>
-            <div class="post-description">
-                <p>Blogifier is simple, beautiful, light-weight open source blog written in .NET Core. This
-                    cross-platform, highly extendable and customizable web application brings all the best blogging
-                    features in small, portable package.</p>
-                <h4>To login:</h4>
-                <ul>
-                    <li>User: demo</li>
-                    <li>Pswd: demo</li>
-                </ul>
-            </div>
-            <a class="post-more btn btn-rounded btn-dark" href="posts/welcome-to-blogifier!">Read</a>
-        </article>
-    </div>
+  <div class="container">
+    <article class="post">
+      <div class="post-cover">
+        <img src="assets/img/cover-desk.jpg" alt="Welcome to Blogifier!">
+        <span class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
+      </div>
+      <h2 class="post-title"><a href="/blogifier/posts/welcome-to-blogifier!">Welcome to Blogifier!</a></h2>
+      <div class="post-meta">
+        <a class="post-meta-author" href="/blogifier/authors/admin">Administrator</a>
+        <time class="post-meta-time">/ September 11, 2018</time>
+      </div>
+      <div class="post-description">
+        <p>Blogifier is simple, beautiful, light-weight open source blog written in .NET Core. This
+          cross-platform, highly extendable and customizable web application brings all the best blogging
+          features in small, portable package.</p>
+        <h4>To login:</h4>
+        <ul>
+          <li>User: demo</li>
+          <li>Pswd: demo</li>
+        </ul>
+      </div>
+      <a class="post-more btn btn-rounded btn-dark" href="posts/welcome-to-blogifier!">Read</a>
+    </article>
+  </div>
 </div>
