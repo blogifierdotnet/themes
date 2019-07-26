@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
@@ -24,6 +25,7 @@ import { HomeModule } from './home/home.module';
     FormsModule,
     RouterModule,
     AppRoutingModule,
+    HttpClientModule,
     HomeModule
   ],
   providers: [],

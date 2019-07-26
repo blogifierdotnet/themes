@@ -22,7 +22,6 @@
     <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
     <h6 class=" category-absolute ml-auto mr-auto">Designed and coded by
       <!-- <h6 class="category category-absolute">Designed and coded by -->
-
       <a href="https://www.creative-tim.com" target="_blank">
         <img src="assets/img/creative-tim-white-slim2.png" class="creative-tim-logo">
       </a>
@@ -32,15 +31,41 @@
 
     <div class="section">
       <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            home
-          </div>
-          <div class="col-md-4">
-            <a href="/posts">Posts</a>
+
+        <div class="row" *ngIf="postList">
+          <div *ngFor="let post of postList.posts" class="col-sm-6">
+            <article class="post">
+              <h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
+              <div class="post-meta">
+                <a class="post-meta-author" href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a>
+                <time class="post-meta-time">/ {{toDate(post.published)}}</time>
+              </div>
+
+              <div class="post-cover">
+                <img src="{{apiRoot}}{{post.cover}}" alt="post.title">
+              </div>
+
+              <div [innerHTML]="post.description" class="post-description"></div>
+              <a class="post-more btn btn-rounded btn-dark" href="posts/{{post.slug}}">Read</a>
+            </article>
           </div>
         </div>
-        <br />
+
+        <div *ngIf="postList && (postList.pager.showNewer || postList.pager.showOlder)" class="pager text-center">
+          <ul class="pagination">
+            <li *ngIf="postList.pager.showOlder" class="page-item">
+              <a aria-label="Older" class="page-link" href="?page={{postList.pager.older}}">
+                <span aria-hidden="true">«</span>
+              </a>
+            </li>
+            <li *ngIf="postList.pager.showNewer" class="page-item">
+              <a aria-label="Newer" class="page-link" href="?page={{postList.pager.newer}}">
+                <span aria-hidden="true">»</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
 
