@@ -14,19 +14,24 @@ export class BlogService {
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   getPosts(): Observable<IPostList> {
-    var postsUrl = environment.apiEndpoint + '/posts?page=1';
-    var searchUrl = environment.apiEndpoint + '/posts/search/';
+    var postsUrl = environment.apiEndpoint + '/api/posts?page=1';
+    var searchUrl = environment.apiEndpoint + '/api/posts/search/';
     
     var page = this.route.snapshot.queryParamMap.get('page');
     var author = this.route.snapshot.queryParamMap.get('author');
+    var category = this.route.snapshot.queryParamMap.get('category');
     var term = this.route.snapshot.queryParamMap.get('term');
 
     if (page) {
-      postsUrl = environment.apiEndpoint + '/posts?page=' + page;
+      postsUrl = environment.apiEndpoint + '/api/posts?page=' + page;
     }
 
     if (author) {
       postsUrl += '&author=' + author;
+    }
+
+    if(category) {
+      postsUrl += '&category=' + category;
     }
 
     if (term) {
@@ -44,7 +49,7 @@ export class BlogService {
   }
 
   getPost(slug: string): Observable<IPostModel>{
-    var url = environment.apiEndpoint + '/posts/byslug/' + slug;
+    var url = environment.apiEndpoint + '/api/posts/byslug/' + slug;
     return this.http.get<IPostModel>(url).pipe(
       tap(data => console.log('Blog post: ' + JSON.stringify(data))),
       catchError(this.handleError)
@@ -52,7 +57,7 @@ export class BlogService {
   }
 
   getSettings(): Observable<IBlogSettings> {
-    var url = environment.apiEndpoint + '/settings';
+    var url = environment.apiEndpoint + '/api/settings';
     return this.http.get<IBlogSettings>(url).pipe(
       tap(data => console.log('Settings: ' + JSON.stringify(data))),
       catchError(this.handleError)

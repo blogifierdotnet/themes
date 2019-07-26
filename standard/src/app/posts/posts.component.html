@@ -1,22 +1,21 @@
 <article *ngIf="postModel" class="post-single">
-  <div class="post-cover" style="background-image: url('assets/img/cover-desk.jpg')"></div>
+  <div class="post-cover" *ngIf="postCover" [ngStyle]="{'background-image':'url('+postCover+')'}"></div>
   <section class="container">
     <div class=" post-body">
       <header class="post-header">
         <h2 class="post-title">{{postModel.post.title}}</h2>
         <div class="post-meta">
           <a href="?author={{postModel.post.author.appUserName}}">
-            <img class="post-meta-img" src="assets/img/avatar.png" alt="{{postModel.post.author.displayName}}" />
+            <img class="post-meta-img" src="{{avatarImg}}" alt="{{postModel.post.author.displayName}}" />
             <span class="post-meta-author">{{postModel.post.author.displayName}}</span>
           </a>
-          <time class="post-meta-time">Sep 11, 2018</time>
-          <span>/</span>
-          <span>
-            <a href="/blogifier/categories/welcome">welcome</a>
-          </span>
-          <span>
-            <a href="/blogifier/categories/blog">blog</a>
-          </span>
+          <time class="post-meta-time">{{toDate(postModel.post.published)}}</time>
+          <ng-template [ngIf]="postModel.post.categories">
+            <span> / </span>
+            <span *ngFor="let tag of postModel.post.categories.split(',')">
+              <a href="?category={{tag}}"> {{tag}} </a>
+            </span>
+          </ng-template>
         </div>
       </header>
       <div [innerHTML]="postModel.post.content" class="post-content"></div>

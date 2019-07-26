@@ -1,15 +1,17 @@
-<div *ngIf="blogSettings" class="page-cover" style="background-image: url('assets/img/cover-desk.jpg')">
-  <h1 class="page-cover-title">
-    <a href="/">{{blogSettings.title}}</a>
-  </h1>
-  <p class="page-cover-desc">{{blogSettings.description}}</p>
-</div>
+<ng-template [ngIf]="blogSettings">
+  <div class="page-cover" *ngIf="blogCover" [ngStyle]="{'background-image':'url('+blogCover+')'}">
+    <h1 class="page-cover-title">
+      <a href="/">{{blogSettings.title}}</a>
+    </h1>
+    <p class="page-cover-desc">{{blogSettings.description}}</p>
+  </div>
+</ng-template>
 
 <div class="page-content">
   <div *ngIf="postList" class="container">
     <article *ngFor="let post of postList.posts" class="post">
       <div class="post-cover">
-        <img src="assets/img/cover-desk.jpg" alt="post.title">
+        <img src="{{apiRoot}}{{post.cover}}" alt="post.title">
         <span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
       </div>
       <h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
