@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import data from '../assets/data.json';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,12 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   title = 'standard';
+  public socialButtons: object;
+  
+  ngOnInit(): void {
+    this.socialButtons = data.socialButtons;
+    console.log("Json data : ", JSON.stringify(data));
+  }
 
   onSubmit(f: NgForm) {
     if(f.value && f.value.term){
