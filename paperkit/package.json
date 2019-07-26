@@ -1,0 +1,61 @@
+{
+  "name": "paper-kit-2-angular",
+  "version": "1.2.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creativetimofficial/pk2-angular.git"
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
+  },
+  "dependencies": {
+    "@angular/animations": "7.2.0",
+    "@angular/common": "7.2.0",
+    "@angular/compiler": "7.2.0",
+    "@angular/core": "7.2.0",
+    "@angular/forms": "7.2.0",
+    "@angular/http": "7.2.0",
+    "@angular/platform-browser": "7.2.0",
+    "@angular/platform-browser-dynamic": "7.2.0",
+    "@angular/router": "7.2.0",
+    "@ng-bootstrap/ng-bootstrap": "2.0.0",
+    "bootstrap": "4.1.2",
+    "core-js": "2.4.1",
+    "jquery": "3.2.1",
+    "jw-bootstrap-switch-ng2": "2.0.1",
+    "ng2-nouislider": "1.7.12",
+    "nouislider": "9.2.0",
+    "popper.js": "1.14.4",
+    "rxjs": "6.2.2",
+    "rxjs-compat": "6.2.2",
+    "zone.js": "0.8.26"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^0.7.0",
+    "@angular/cli": "7.2.0",
+    "@angular/compiler-cli": "7.2.0",
+    "@angular/language-service": "7.2.0",
+    "@types/jasmine": "2.5.45",
+    "@types/node": "6.0.60",
+    "codelyzer": "4.4.3",
+    "jasmine-core": "2.6.2",
+    "jasmine-spec-reporter": "4.1.0",
+    "karma": "3.0.0",
+    "karma-chrome-launcher": "2.1.1",
+    "karma-cli": "1.0.1",
+    "karma-coverage-istanbul-reporter": "1.2.1",
+    "karma-jasmine": "1.1.0",
+    "karma-jasmine-html-reporter": "0.2.2",
+    "protractor": "5.4.0",
+    "ts-node": "3.0.4",
+    "tslint": "5.3.2",
+    "typescript": "3.2.2"
+  }
+}
