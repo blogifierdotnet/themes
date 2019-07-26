@@ -7,15 +7,12 @@ import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 
-import { ComponentsModule } from '../components/components.module';
-
 @NgModule({
     imports: [
         CommonModule,
         BrowserModule,
         FormsModule,
-        RouterModule,
-        ComponentsModule
+        RouterModule
     ],
     declarations: [ HomeComponent ],
     exports:[ HomeComponent ],

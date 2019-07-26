@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-landing',
-    templateUrl: './landing.component.html',
-    styleUrls: ['./landing.component.scss']
+    templateUrl: './posts.component.html',
+    styleUrls: ['./posts.component.scss']
 })
 
-export class LandingComponent implements OnInit {
+export class PostsComponent implements OnInit {
   focus: any;
   focus1: any;
 

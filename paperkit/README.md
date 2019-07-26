@@ -43,9 +43,7 @@ Paper Kit 2 Angular is built on top of Bootstrap 4, so it fully supports it. Mos
 ## Demo
 
 - [Start page](https://demos.creative-tim.com/paper-kit-2-angular/home)
-- [Landing Page](https://demos.creative-tim.com/paper-kit-2-angular/landing)
-- [Register Page](https://demos.creative-tim.com/paper-kit-2-angular/signup)
-- [Profile Page](https://demos.creative-tim.com/paper-kit-2-angular/user-profile)
+- [Posts Page](https://demos.creative-tim.com/paper-kit-2-angular/landing)
 
 [View More](https://demos.creative-tim.com/paper-kit-2-angular/).
 
@@ -91,56 +89,17 @@ paper-kit-2-angular
 │   │   ├── app.component.ts
 │   │   ├── app.module.ts
 │   │   ├── app.routing.ts
-│   │   ├── components
-│   │   │   ├── basicelements
-│   │   │   │   ├── basicelements.component.html
-│   │   │   │   ├── basicelements.component.scss
-│   │   │   │   ├── basicelements.component.spec.ts
-│   │   │   │   └── basicelements.component.ts
-│   │   │   ├── components.component.html
-│   │   │   ├── components.component.ts
-│   │   │   ├── components.module.ts
-│   │   │   ├── modal
-│   │   │   │   ├── modal.component.html
-│   │   │   │   ├── modal.component.scss
-│   │   │   │   ├── modal.component.spec.ts
-│   │   │   │   └── modal.component.ts
-│   │   │   ├── navigation
-│   │   │   │   ├── navigation.component.html
-│   │   │   │   ├── navigation.component.scss
-│   │   │   │   ├── navigation.component.spec.ts
-│   │   │   │   └── navigation.component.ts
-│   │   │   ├── notification
-│   │   │   │   ├── notification.component.html
-│   │   │   │   ├── notification.component.scss
-│   │   │   │   ├── notification.component.spec.ts
-│   │   │   │   └── notification.component.ts
-│   │   │   ├── nucleoicons
-│   │   │   │   ├── nucleoicons.component.html
-│   │   │   │   ├── nucleoicons.component.scss
-│   │   │   │   ├── nucleoicons.component.spec.ts
-│   │   │   │   └── nucleoicons.component.ts
-│   │   │   └── typography
-│   │   │       ├── typography.component.html
-│   │   │       ├── typography.component.scss
-│   │   │       ├── typography.component.spec.ts
-│   │   │       └── typography.component.ts
 │   │   ├── home
 │   │   │   ├── home.component.html
 │   │   │   ├── home.component.scss
 │   │   │   ├── home.component.spec.ts
 │   │   │   ├── home.component.ts
 │   │   │   └── home.module.ts
-│   │   ├── landing
-│   │   │   ├── landing.component.html
-│   │   │   ├── landing.component.scss
-│   │   │   ├── landing.component.spec.ts
-│   │   │   └── landing.component.ts
-│   │   ├── profile
-│   │   │   ├── profile.component.html
-│   │   │   ├── profile.component.scss
-│   │   │   ├── profile.component.spec.ts
-│   │   │   └── profile.component.ts
+│   │   ├── posts
+│   │   │   ├── posts.component.html
+│   │   │   ├── posts.component.scss
+│   │   │   ├── posts.component.spec.ts
+│   │   │   └── posts.component.ts
 │   │   ├── shared
 │   │   │   ├── footer
 │   │   │   │   ├── footer.component.html
@@ -152,11 +111,6 @@ paper-kit-2-angular
 │   │   │       ├── navbar.component.scss
 │   │   │       ├── navbar.component.spec.ts
 │   │   │       └── navbar.component.ts
-│   │   └── signup
-│   │       ├── signup.component.html
-│   │       ├── signup.component.scss
-│   │       ├── signup.component.spec.ts
-│   │       └── signup.component.ts
 │   ├── assets
 │   │   ├── css
 │   │   ├── fonts
