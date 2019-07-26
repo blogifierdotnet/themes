@@ -5,46 +5,35 @@
     </h1>
     <p class="page-cover-desc">{{blogSettings.description}}</p>
   </div>
-</ng-template>
-
-<div class="page-content">
-  <div *ngIf="postList" class="container">
-    <article *ngFor="let post of postList.posts" class="post">
-      <div class="post-cover">
-        <img src="{{apiRoot}}{{post.cover}}" alt="post.title">
-        <span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
-      </div>
-      <h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
-      <div class="post-meta">
-        <a class="post-meta-author" href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a>
-        <time class="post-meta-time">/ {{toDate(post.published)}}</time>
-      </div>
-      <div [innerHTML]="post.description" class="post-description"></div>
-      <a class="post-more btn btn-rounded btn-dark" href="posts/{{post.slug}}">Read</a>
-    </article>
-  </div>
-</div>
-
-<ul *ngIf="postList && (postList.pager.showNewer || postList.pager.showOlder)" class="pagination justify-content-center">
-  <li *ngIf="postList.pager.showOlder" class="item item-prev">
-    <a class="item-link" href="?page={{postList.pager.older}}">
-      <i class="item-icon fa fa-angle-left"></i>
-    </a>
-  </li>
-  <li *ngIf="postList.pager.showNewer" class="item item-next">
-    <a class="item-link" href="?page={{postList.pager.newer}}">
-      <i class="item-icon fa fa-angle-right"></i>
-    </a>
-  </li>
-</ul>
-
-<footer *ngIf="postList" class="blog-footer">
-  <div class="container d-lg-flex text-center text-lg-left">
-    <p>Copyright © 2019. Powered by <a href="https://github.com/blogifierdotnet/Blogifier" data-toggle="tooltip"
-        target="_blank" title="Version - 2.4.0.0">Blogifier</a>. Designed by <a href="https://francis.bio/"
-        target="_blank" rel="nofollow">Francis</a>.</p>
-    <div class="ml-auto">
-      <a href="admin">Login</a>
+  <div class="page-content">
+    <div *ngIf="postList" class="container">
+      <article *ngFor="let post of postList.posts" class="post">
+        <div class="post-cover">
+          <img src="{{apiRoot}}{{post.cover}}" alt="post.title">
+          <span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
+        </div>
+        <h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
+        <div class="post-meta">
+          <a class="post-meta-author" href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a>
+          <time class="post-meta-time">/ {{toDate(post.published)}}</time>
+        </div>
+        <div [innerHTML]="post.description" class="post-description"></div>
+        <a class="post-more btn btn-rounded btn-dark" href="posts/{{post.slug}}">Read</a>
+      </article>
     </div>
   </div>
-</footer>
+  <ul *ngIf="postList && (postList.pager.showNewer || postList.pager.showOlder)"
+    class="pagination justify-content-center">
+    <li *ngIf="postList.pager.showOlder" class="item item-prev">
+      <a class="item-link" href="?page={{postList.pager.older}}">
+        <i class="item-icon fa fa-angle-left"></i>
+      </a>
+    </li>
+    <li *ngIf="postList.pager.showNewer" class="item item-next">
+      <a class="item-link" href="?page={{postList.pager.newer}}">
+        <i class="item-icon fa fa-angle-right"></i>
+      </a>
+    </li>
+  </ul>
+  <app-footer></app-footer>
+</ng-template>

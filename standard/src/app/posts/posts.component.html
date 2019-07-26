@@ -1,48 +1,40 @@
-<article *ngIf="postModel" class="post-single">
-  <div class="post-cover" *ngIf="postCover" [ngStyle]="{'background-image':'url('+postCover+')'}"></div>
-  <section class="container">
-    <div class=" post-body">
-      <header class="post-header">
-        <h2 class="post-title">{{postModel.post.title}}</h2>
-        <div class="post-meta">
-          <a href="?author={{postModel.post.author.appUserName}}">
-            <img class="post-meta-img" src="{{avatarImg}}" alt="{{postModel.post.author.displayName}}" />
-            <span class="post-meta-author">{{postModel.post.author.displayName}}</span>
-          </a>
-          <time class="post-meta-time">{{toDate(postModel.post.published)}}</time>
-          <ng-template [ngIf]="postModel.post.categories">
-            <span> / </span>
-            <span *ngFor="let tag of postModel.post.categories.split(',')">
-              <a href="?category={{tag}}"> {{tag}} </a>
-            </span>
-          </ng-template>
-        </div>
-      </header>
-      <div [innerHTML]="postModel.post.content" class="post-content"></div>
+<ng-template [ngIf]="postModel">
+  <article class="post-single">
+    <div class="post-cover" *ngIf="postCover" [ngStyle]="{'background-image':'url('+postCover+')'}"></div>
+    <section class="container">
+      <div class=" post-body">
+        <header class="post-header">
+          <h2 class="post-title">{{postModel.post.title}}</h2>
+          <div class="post-meta">
+            <a href="?author={{postModel.post.author.appUserName}}">
+              <img class="post-meta-img" src="{{avatarImg}}" alt="{{postModel.post.author.displayName}}" />
+              <span class="post-meta-author">{{postModel.post.author.displayName}}</span>
+            </a>
+            <time class="post-meta-time">{{toDate(postModel.post.published)}}</time>
+            <ng-template [ngIf]="postModel.post.categories">
+              <span> / </span>
+              <span *ngFor="let tag of postModel.post.categories.split(',')">
+                <a href="?category={{tag}}"> {{tag}} </a>
+              </span>
+            </ng-template>
+          </div>
+        </header>
+        <div [innerHTML]="postModel.post.content" class="post-content"></div>
 
-      <ul *ngIf="postModel.older || postModel.newer" class="pagination justify-content-center">
-        <li *ngIf="postModel.older" class="item item-prev">
-          <a class="item-link" href="posts/{{postModel.older.slug}}" title="{{postModel.older.title}}">
-            <i class="item-icon fa fa-angle-left"></i>
-          </a>
-        </li>
-        <li *ngIf="postModel.newer" class="item item-next">
-          <a class="item-link" href="posts/{{postModel.newer.slug}}" title="posts/{{postModel.newer.title}}">
-            <i class="item-icon fa fa-angle-right"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-</article>
-
-<footer *ngIf="postModel" class="blog-footer">
-  <div class="container d-lg-flex text-center text-lg-left">
-    <p>Copyright © 2019. Powered by <a href="https://github.com/blogifierdotnet/Blogifier" data-toggle="tooltip"
-        target="_blank" title="Version - 2.4.0.0">Blogifier</a>. Designed by <a href="https://francis.bio/"
-        target="_blank" rel="nofollow">Francis</a>.</p>
-    <div class="ml-auto">
-      <a href="admin">Login</a>
-    </div>
-  </div>
-</footer>
+        <ul *ngIf="postModel.older || postModel.newer" class="pagination justify-content-center">
+          <li *ngIf="postModel.older" class="item item-prev">
+            <a class="item-link" href="posts/{{postModel.older.slug}}" title="{{postModel.older.title}}">
+              <i class="item-icon fa fa-angle-left"></i>
+            </a>
+          </li>
+          <li *ngIf="postModel.newer" class="item item-next">
+            <a class="item-link" href="posts/{{postModel.newer.slug}}" title="posts/{{postModel.newer.title}}">
+              <i class="item-icon fa fa-angle-right"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </article>
+  <app-footer></app-footer>
+</ng-template>
