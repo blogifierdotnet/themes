@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   public blogSettings: IBlogSettings;
   public postList: IPostList;
   public blogCover: string;
+  public blogLogo: string;
   public apiRoot: string;
   errorMessage = '';
 
@@ -31,7 +32,8 @@ export class HomeComponent implements OnInit {
     this.blogService.getSettings().subscribe(
       result => { 
         this.blogSettings = result;
-        this.blogCover = environment.apiEndpoint + '/' + this.blogSettings.cover; 
+        this.blogCover = environment.apiEndpoint + '/' + this.blogSettings.cover;
+        this.blogLogo = environment.apiEndpoint + '/' + this.blogSettings.logo;
       },
       error => this.errorMessage = <any>error
     );
