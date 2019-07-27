@@ -11,26 +11,11 @@
       </button>
     </div>
     <div class="navbar-collapse" id="navbarToggler">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom"
-            href="#" target="_blank">
-            <i class="fa fa-twitter"></i>
-            <p class="d-lg-none">Twitter</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom"
-            href="#" target="_blank">
-            <i class="fa fa-facebook-square"></i>
-            <p class="d-lg-none">Facebook</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom"
-            href="#" target="_blank">
-            <i class="fa fa-github"></i>
-            <p class="d-lg-none">GitHub</p>
+      <ul *ngIf="socialButtons" class="navbar-nav ml-auto">   
+        <li *ngFor="let btn of socialButtons" class="nav-item">
+          <a class="nav-link" rel="tooltip" title="{{btn.title}}" data-placement="bottom" href="{{btn.link}}" target="_blank">
+            <i class="fa {{btn.icon}}"></i>
+            <p class="d-lg-none">{{btn.name}}</p>
           </a>
         </li>
       </ul>
