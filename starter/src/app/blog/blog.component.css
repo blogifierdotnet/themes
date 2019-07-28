@@ -1,0 +1,10 @@
+h1 a {
+  color: #5731b3;
+  font-size: 32px;
+  font-family: roboto, sans-serif;
+}
+p {
+  font-family: roboto, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+}
