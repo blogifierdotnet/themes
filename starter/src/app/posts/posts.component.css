@@ -1,0 +1,28 @@
+h1 {
+  color: #5731b3;
+  font-size: 32px;
+  font-weight: 300;
+  font-family: roboto, sans-serif;
+}
+
+.post-header {
+  margin: 0 0 20px -15px;
+}
+
+.post-meta {
+  font-size: 0.9em;
+}
+
+a {
+  color: #5731b3;
+}
+
+.motto {
+  margin-left: -15px;
+}
+
+.post-content {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.0em;
+  font-weight: 300;
+}

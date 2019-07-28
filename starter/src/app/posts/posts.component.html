@@ -1,8 +1,39 @@
 <section class="container content">
-    
-    <div>
-        <h1>Post one</h1>
-        <div>The post one</div>
+
+  <div *ngIf="postModel" class="container">
+    <div class="post-header">
+      <h1>{{postModel.post.title}}</h1>
+      <div class="post-meta">
+        <a class="post-meta-author"
+          href="blog?author={{postModel.post.author.appUserName}}">{{postModel.post.author.displayName}}</a>
+        <time class="post-meta-time">/ {{toDate(postModel.post.published)}}</time>
+        <ng-template [ngIf]="postModel.post.categories">
+          <span *ngFor="let tag of postModel.post.categories.split(',')">
+            / <a href="blog?category={{tag}}"> {{tag}} </a>
+          </span>
+        </ng-template>
+      </div>
     </div>
+  </div>
+
+  <div *ngIf="postModel" class="row">
+    <div class="col-md-12 mr-auto ml-auto">
+      <div [innerHTML]="postModel.post.content" class="post-content text-left"></div>
+      <ul *ngIf="postModel.older || postModel.newer" class="pagination justify-content-center" class="pagination justify-content-center">
+        <li *ngIf="postModel.older" class="page-item">
+          <a aria-label="Older" class="page-link" href="posts/{{postModel.older.slug}}"
+            title="{{postModel.older.title}}">
+            <span aria-hidden="true">«</span>
+          </a>
+        </li>
+        <li *ngIf="postModel.newer" class="page-item">
+          <a aria-label="Newer" class="page-link" href="posts/{{postModel.newer.slug}}"
+            title="posts/{{postModel.newer.title}}">
+            <span aria-hidden="true">»</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
 </section>
