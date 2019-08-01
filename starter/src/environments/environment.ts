@@ -1,8 +1,7 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`
+// set to pull posts via API from blogifier.net in dev mode 
 
 export const environment = {
   production: false,
-  apiEndpoint: 'http://localhost:63023'
+  apiEndpoint: 'http://blogifier.net'
 };

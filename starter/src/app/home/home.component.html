@@ -6,7 +6,7 @@
     portable package. By default, it uses file-based SQLite database, scaling up to any Entity-Framework compatible data
     storage.</p>
 
-  <owl-carousel [options]="mySlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']">
+  <owl-carousel [options]="mySlideOptions" [items]="mySlideImages" [carouselClasses]="['owl-theme', 'sliding']">
     <div class="item" *ngFor="let image of mySlideImages;let i = index">
       <div>
         <img src={{image}} />
