@@ -1,13 +1,18 @@
-<post-list></post-list>
-<div class="row">
-    <div class="col" *ngIf="blogSettings">
-        © 2019 Copyright: <a href="/"> {{ blogSettings.title }}</a>
+<ng-template [ngIf]="blogSettings">
+  <div *ngIf="postList">
+    <div *ngFor="let post of postList.posts" style="margin-bottom: 20px">
+      <h2>{{ post.title }}</h2>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Posted by <a
+              href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ toDate(post.published) }}</li>
+        </ol>
+      </nav>
+      <article>
+        <div [innerHTML]="post.description"></div>
+      </article>
+      <a href="posts/{{post.slug}}" class="btn btn-secondary">Read more</a>
     </div>
-    <div class="col text-right">
-        <ul class="navbar-nav flex-grow">
-            <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-                <a class="nav-link text-dark" href="admin">Admin</a>
-            </li>
-        </ul>
-    </div>
-</div>
+  </div>
+</ng-template>

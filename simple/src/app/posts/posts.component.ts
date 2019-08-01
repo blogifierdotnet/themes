@@ -1,28 +1,48 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../environments/environment';
+
+import { BlogService } from '../core/blog.service';
+import { IBlogSettings, IPostModel } from '../core/blog.models';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html'
 })
-export class PostsComponent {
-  public blogPost: BlogPost;
-  public id: string;
+export class PostsComponent implements OnInit {
+  public blogSettings: IBlogSettings;
+  public postModel: IPostModel;
+  public postCover: string;
+  public avatarImg: string;
+  errorMessage = '';
 
-  constructor(http: HttpClient, private route: ActivatedRoute) {
-    this.id = this.route.snapshot.paramMap.get('id');
+  constructor(private blogService: BlogService, private route: ActivatedRoute) { }
 
-    http.get<BlogPost>('http://localhost:63023/api/posts/' + this.id).subscribe(result => {
-      this.blogPost = result;
-    }, error => console.error(error));
+  ngOnInit(): void {
+    this.blogService.getSettings().subscribe(
+      result => { 
+        this.blogSettings = result;
+      },
+      error => this.errorMessage = <any>error
+    );
+
+    var slug = this.route.snapshot.paramMap.get('slug');
+    if(slug){
+      this.blogService.getPost(slug).subscribe(
+        result => { 
+          this.postModel = result;
+          this.postCover = environment.apiEndpoint + '/' + this.postModel.post.cover;
+          this.avatarImg = environment.apiEndpoint + '/' + this.postModel.post.author.avatar;
+        },
+        error => this.errorMessage = <any>error
+      );
+    }
   }
-}
 
-interface BlogPost {
-  id: number;
-  title: string;
-  description: string;
-  content: string;
-  published: string;
+  toDate(date): string {
+    var monthNames = ["January", "February", "March", "April", "May", "June", 
+      "July", "August", "September", "October", "November", "December"];
+    var d = new Date(date); 
+    return monthNames[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  }
 }

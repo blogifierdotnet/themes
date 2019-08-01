@@ -1,4 +1,4 @@
-<div *ngIf="blogPost">
-  <h1>{{ blogPost.title }}</h1>
-  <div [innerHTML]="blogPost.content"></div>
+<div *ngIf="postModel">
+  <h1>{{ postModel.post.title }}</h1>
+  <div [innerHTML]="postModel.post.content"></div>
 </div>

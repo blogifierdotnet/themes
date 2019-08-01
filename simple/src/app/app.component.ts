@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'simple';
-}
+  isExpanded = false;
 
-export function formatDate(date) {
-  var monthNames = [
-    "January", "February", "March", "April", "May", "June", 
-    "July", "August", "September", "October", "November", "December"
-  ];
+  collapse() {
+    this.isExpanded = false;
+  }
 
-  var d = new Date(date);
-  var day = d.getDate();
-  var monthIndex = d.getMonth();
-  var year = d.getFullYear();
-
-  return monthNames[monthIndex] + ' ' + day + ', ' + year;
+  toggle() {
+    this.isExpanded = !this.isExpanded;
+  }
+  
+  onSubmit(f: NgForm) {
+    if(f.value && f.value.term){
+      window.location.href = '?term=' + f.value.term;
+    }
+  }
 }
