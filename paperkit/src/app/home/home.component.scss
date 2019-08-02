@@ -1,6 +1,6 @@
 h2.post-title a {
   font-size: 40px;
-  color: black !important;
+  color: #66615B !important;
 }
 
 .post-cover img {
@@ -24,4 +24,8 @@ h2.post-title a {
 
 .angular-logo img {
   width: 60px !important;
+}
+
+.example-page .img-rounded {
+  max-height: 300px;
 }

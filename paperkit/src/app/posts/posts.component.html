@@ -1,46 +1,96 @@
-<ng-template [ngIf]="postModel">
-  <div class="page-header" data-parallax="true" *ngIf="postCover" [ngStyle]="{'background-image':'url('+postCover+')'}">
+<div class="wrapper" *ngIf="postModel">
+  <div class="page-header page-header-xs" data-parallax="true" *ngIf="postCover"
+    [ngStyle]="{'background-image':'url('+postCover+')'}">
     <div class="filter"></div>
+  </div>
+  <div class="section profile-content">
     <div class="container">
-      <div class="motto text-center">
-        <h1>{{postModel.post.title}}</h1>
-        <div class="post-meta">
-          <a class="post-meta-author"
-            href="?author={{postModel.post.author.appUserName}}">{{postModel.post.author.displayName}}</a>
-          <time class="post-meta-time">/ {{toDate(postModel.post.published)}}</time>
-          <ng-template [ngIf]="postModel.post.categories">
+      <div class="owner">
+        <div class="avatar">
+          <img src="{{avatarImg}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+        </div>
+        <div class="name">
+          <h4 class="title">{{postModel.post.author.displayName}} / {{toDate(postModel.post.published)}}<br /></h4>
+          <h1>{{postModel.post.title}}</h1>
+          <h6 *ngIf="postModel.post.categories" class="description">
+            <i class="fa fa-tags"></i>
             <span *ngFor="let tag of postModel.post.categories.split(',')">
-              / <a href="?category={{tag}}"> {{tag}} </a>
+              &nbsp; <a href="?category={{tag}}"> {{tag}} </a>
             </span>
+          </h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 ml-auto mr-auto text-center">
+          <div [innerHTML]="postModel.post.content" class="post-content text-left"></div>
+          <br />
+          <ng-template [ngIf]="postModel.older || postModel.newer">
+            <a *ngIf="postModel.older" href="posts/{{postModel.older.slug}}" title="{{postModel.older.title}}"
+              class="btn btn-outline-default btn-round"><i class="fa fa-angle-left"></i> Older</a>
+            <a *ngIf="postModel.newer" href="posts/{{postModel.newer.slug}}" title="{{postModel.newer.title}}"
+              class="btn btn-outline-default btn-round">Newer <i class="fa fa-angle-right"></i></a>
           </ng-template>
         </div>
-        <br />
       </div>
+      <br />
+
     </div>
   </div>
-  <div class="main">
-    <div class="section text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mr-auto ml-auto">
-            <div [innerHTML]="postModel.post.content" class="post-content text-left"></div>
-            <ul *ngIf="postModel.older || postModel.newer" class="pagination justify-content-center" class="pagination">
-              <li *ngIf="postModel.older" class="page-item">
-                <a aria-label="Older" class="page-link" href="posts/{{postModel.older.slug}}"
-                  title="{{postModel.older.title}}">
-                  <span aria-hidden="true">«</span>
-                </a>
-              </li>
-              <li *ngIf="postModel.newer" class="page-item">
-                <a aria-label="Newer" class="page-link" href="posts/{{postModel.newer.slug}}"
-                  title="posts/{{postModel.newer.title}}">
-                  <span aria-hidden="true">»</span>
-                </a>
-              </li>
-            </ul>
+
+  <div class="section section-dark text-center">
+    <div class="container">
+      <h2 class="title">Let's get to know our authors</h2>
+      <div class="row">
+
+        <div class="col-md-4 ml-auto">
+          <div class="card card-profile card-plain">
+            <div class="card-avatar">
+              <a href="?author=demo"><img src="http://blogifier.net/lib/img/avatar.jpg" alt="..."></a>
+            </div>
+            <div class="card-block">
+              <a href="?author=demo">
+                <div class="author">
+                  <h4 class="card-title">Demo user</h4>
+                </div>
+              </a>
+              <p class="card-description text-center">
+                Teamwork is so important that it is virtually impossible for you to reach the heights of your
+                capabilities or make the money that you want without becoming very good at it.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
+            </div>
           </div>
         </div>
+
+        <div class="col-md-4 mr-auto">
+          <div class="card card-profile card-plain">
+            <div class="card-avatar">
+              <a href="?author=admin"><img src="http://blogifier.net/data/admin/avatar.png" alt="..."></a>
+            </div>
+            <div class="card-block">
+              <a href="?author=admin">
+                <div class="author">
+                  <h4 class="card-title">Administrator</h4>
+                </div>
+              </a>
+              <p class="card-description text-center">
+                A group becomes a team when each member is sure enough of himself and his contribution to praise the
+                skill of the others. No one can whistle a symphony. It takes an orchestra to play it.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google-plus"></i></a>
+            </div>
+          </div>
+        </div>
+
       </div>
+      
     </div>
   </div>
-</ng-template>
+
+</div>

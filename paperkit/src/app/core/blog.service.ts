@@ -36,13 +36,13 @@ export class BlogService {
 
     if (term) {
       return this.http.get<IPostList>(searchUrl + term).pipe(
-        tap(data => console.log('Search: ' + JSON.stringify(data))),
+        tap(data => this.logMessage('Search: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
     }
     else {
       return this.http.get<IPostList>(postsUrl).pipe(
-        tap(data => console.log('Posts: ' + JSON.stringify(data))),
+        tap(data => this.logMessage('Posts: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
     }
@@ -51,7 +51,7 @@ export class BlogService {
   getPost(slug: string): Observable<IPostModel>{
     var url = environment.apiEndpoint + '/api/posts/byslug/' + slug;
     return this.http.get<IPostModel>(url).pipe(
-      tap(data => console.log('Blog post: ' + JSON.stringify(data))),
+      tap(data => this.logMessage('Blog post: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
@@ -59,9 +59,15 @@ export class BlogService {
   getSettings(): Observable<IBlogSettings> {
     var url = environment.apiEndpoint + '/api/settings';
     return this.http.get<IBlogSettings>(url).pipe(
-      tap(data => console.log('Settings: ' + JSON.stringify(data))),
+      tap(data => this.logMessage('Settings: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
+  }
+
+  private logMessage(msg: string){
+    if(!environment.production){
+      console.log(msg);
+    }
   }
 
   private handleError(err: HttpErrorResponse) {

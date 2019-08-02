@@ -26,29 +26,22 @@
   </div>
   <div class="main">
 
+    <div _ngcontent-c3="" class="section section-dark">
+      <div _ngcontent-c3="" class="container">
+        <div _ngcontent-c3="" class="row example-page" *ngIf="postList">
+
+          <div *ngFor="let post of postList.posts" _ngcontent-c3="" class="col-md-6 text-center" routerlinkactive="active">
+            <img _ngcontent-c3="" alt="Rounded Image" class="img-rounded img-responsive" src="{{apiRoot}}{{post.cover}}" style="width: 100%">
+            <p _ngcontent-c3="" class="description">{{post.title}}</p>
+            <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round" href="posts/{{post.slug}}">Read More</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <div class="section">
       <div class="container">
-
-        <div class="row" *ngIf="postList">
-          <div *ngFor="let post of postList.posts" class="col-sm-6">
-            <article class="post">
-              <h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
-              <div class="post-meta">
-                <a class="post-meta-author" href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a>
-                <time class="post-meta-time">/ {{toDate(post.published)}}</time>
-              </div>
-
-              <div class="post-cover">
-                <img src="{{apiRoot}}{{post.cover}}" alt="post.title">
-              </div>
-
-              <div [innerHTML]="post.description" class="post-description"></div>
-              <div class="text-center">
-                <a class="btn btn-danger btn-round" href="posts/{{post.slug}}">Read</a>
-              </div>
-            </article>
-          </div>
-        </div>
 
         <div *ngIf="postList && (postList.pager.showNewer || postList.pager.showOlder)" class="pager text-center">
           <ul class="pagination">
