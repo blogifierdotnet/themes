@@ -11,11 +11,10 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
-import { HomeModule } from './home/home.module';
-
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     PostsComponent,
     NavbarComponent,
     FooterComponent
@@ -25,8 +24,7 @@ import { HomeModule } from './home/home.module';
     FormsModule,
     RouterModule,
     AppRoutingModule,
-    HttpClientModule,
-    HomeModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

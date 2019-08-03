@@ -20,10 +20,10 @@
           </h6>
         </div>
       </div>
-      <div class="row">
+      <div class="row" class="post-content">
         <div class="col-md-10 ml-auto mr-auto text-center">
-          <div [innerHTML]="postModel.post.content" class="post-content text-left"></div>
-          <br />
+          <div [innerHTML]="postModel.post.content" class="text-left"></div>
+          <br /><br />
           <ng-template [ngIf]="postModel.older || postModel.newer">
             <a *ngIf="postModel.older" href="posts/{{postModel.older.slug}}" title="{{postModel.older.title}}"
               class="btn btn-outline-default btn-round"><i class="fa fa-angle-left"></i> Older</a>

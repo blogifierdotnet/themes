@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../core/blog.service';
 import { IBlogSettings, IPostList } from '../core/blog.models';
 import { environment } from '../../environments/environment';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -41,6 +42,12 @@ export class HomeComponent implements OnInit {
       result => { this.postList = result; },
       error => this.errorMessage = <any>error
     );
+  }
+
+  onSubmit(f: NgForm) {
+    if(f.value && f.value.txtEmail && !f.invalid){
+      alert(f.value.txtEmail + ' added to the list. Thank you!');
+    }
   }
 
   toDate(date): string {
