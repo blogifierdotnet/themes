@@ -21,19 +21,22 @@
         <div class="row example-page" *ngIf="postList">
 
           <div *ngFor="let post of postList.posts" class="col-md-6 text-center" routerlinkactive="active">
-            <img alt="Rounded Image" class="img-rounded img-responsive" src="{{apiRoot}}{{post.cover}}"
-              style="width: 100%">
-            <p class="description">{{post.title}}</p>
-            <a class="btn btn-outline-neutral btn-round" href="posts/{{post.slug}}">Read More</a>
+            <a href="posts/{{post.slug}}">
+              <img alt="Rounded Image" class="img-rounded img-responsive" src="{{apiRoot}}{{post.cover}}" style="width: 100%">
+              <span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
+              <h4 class="card-title">{{ post.title }}</h4>
+            </a>
+            <!-- <a class="btn btn-outline-neutral btn-round" href="posts/{{post.slug}}">Read More</a> -->
           </div>
 
         </div>
 
         <div *ngIf="postList && (postList.pager.showNewer || postList.pager.showOlder)" class="row">
           <div class="col-md-10 ml-auto mr-auto text-center">
-            <a *ngIf="postList.pager.showOlder" href="?page={{postList.pager.older}}" title="Older" class="btn btn-outline-neutral btn-round"><i
-                class="fa fa-angle-left"></i> Older</a>
-            <a *ngIf="postList.pager.showNewer" href="?page={{postList.pager.newer}}" title="Newer" class="btn btn-outline-neutral btn-round">Newer
+            <a *ngIf="postList.pager.showOlder" href="?page={{postList.pager.older}}" title="Older"
+              class="btn btn-outline-neutral btn-round"><i class="fa fa-angle-left"></i> Older</a>
+            <a *ngIf="postList.pager.showNewer" href="?page={{postList.pager.newer}}" title="Newer"
+              class="btn btn-outline-neutral btn-round">Newer
               <i class="fa fa-angle-right"></i></a>
           </div>
         </div>
@@ -44,7 +47,7 @@
               <div class="card-block">
                 <h4 class="card-title">Stay in touch</h4>
                 <p class="card-description text-center">
-                    Join our subscribers list to get the latest news and updates directly in your inbox.
+                  Join our subscribers list to get the latest news and updates directly in your inbox.
                 </p>
               </div>
               <div class="card-footer text-center">
@@ -55,8 +58,8 @@
                         <i class="nc-icon nc-email-85"></i>
                       </span>
                     </div>
-                    <input type="email" name="txtEmail" ngModel [email]="true" class="form-control" placeholder="Email" (focus)="focus=true"
-                      (blur)="focus=false" />
+                    <input type="email" name="txtEmail" ngModel [email]="true" class="form-control" placeholder="Email"
+                      (focus)="focus=true" (blur)="focus=false" />
                   </div>
                   <div class="btn-newsletter">
                     <button type="submit" class="btn btn-outline-neutral btn-round">Subscribe</button>

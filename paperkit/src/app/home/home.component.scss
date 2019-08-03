@@ -33,3 +33,24 @@ h2.post-title a {
 .btn-newsletter {
   margin-top: 20px;
 }
+
+h4.card-title {
+  color: white;
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.post-featrued-label {
+  position: absolute;
+  bottom: 4.4rem;
+  left: 2rem;
+  z-index: 100;
+  color: #212529;
+  background-color: gold;
+  display: block;
+  padding: .25rem .5rem;
+  font-size: .75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: .25rem;
+}

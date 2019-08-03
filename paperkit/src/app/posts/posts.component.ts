@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../environments/environment';
 
 import { BlogService } from '../core/blog.service';
-import { IBlogSettings, IPostModel } from '../core/blog.models';
+import { IBlogSettings, IPostModel, IAuthor } from '../core/blog.models';
 
 @Component({
   selector: 'app-posts',
@@ -15,17 +15,28 @@ export class PostsComponent implements OnInit {
   focus: any;
   focus1: any;
   public blogSettings: IBlogSettings;
+  public authors: object;
   public postModel: IPostModel;
   public postCover: string;
   public avatarImg: string;
+  public webRoot: string;
   errorMessage = '';
 
   constructor(private blogService: BlogService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.webRoot = environment.apiEndpoint;
+    
     this.blogService.getSettings().subscribe(
       result => {
         this.blogSettings = result;
+      },
+      error => this.errorMessage = <any>error
+    );
+
+    this.blogService.getAuthors().subscribe(
+      result => {
+        this.authors = result;
       },
       error => this.errorMessage = <any>error
     );

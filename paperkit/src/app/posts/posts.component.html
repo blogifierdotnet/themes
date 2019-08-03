@@ -40,56 +40,34 @@
   <div class="section section-dark text-center">
     <div class="container">
       <h2 class="title">Let's get to know our authors</h2>
-      <div class="row">
+      <div *ngIf="authors" class="row">
 
-        <div class="col-md-4 ml-auto">
+        <div *ngFor="let author of authors" class="col-md-4 ml-auto">
           <div class="card card-profile card-plain">
             <div class="card-avatar">
-              <a href="?author=demo"><img src="http://blogifier.net/lib/img/avatar.jpg" alt="..."></a>
+              <a href="?author={{author.appUserName}}"><img src="{{webRoot}}/{{author.avatar}}"
+                  alt="{{author.displayName}}"></a>
             </div>
             <div class="card-block">
-              <a href="?author=demo">
+              <a href="?author={{author.appUserName}}">
                 <div class="author">
-                  <h4 class="card-title">Demo user</h4>
+                  <h4 class="card-title">{{author.displayName}}</h4>
                 </div>
               </a>
               <p class="card-description text-center">
-                Teamwork is so important that it is virtually impossible for you to reach the heights of your
-                capabilities or make the money that you want without becoming very good at it.
+                {{author.bio}}
               </p>
             </div>
+            <!--
             <div class="card-footer text-center">
               <a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
               <a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mr-auto">
-          <div class="card card-profile card-plain">
-            <div class="card-avatar">
-              <a href="?author=admin"><img src="http://blogifier.net/data/admin/avatar.png" alt="..."></a>
-            </div>
-            <div class="card-block">
-              <a href="?author=admin">
-                <div class="author">
-                  <h4 class="card-title">Administrator</h4>
-                </div>
-              </a>
-              <p class="card-description text-center">
-                A group becomes a team when each member is sure enough of himself and his contribution to praise the
-                skill of the others. No one can whistle a symphony. It takes an orchestra to play it.
-              </p>
-            </div>
-            <div class="card-footer text-center">
-              <a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google-plus"></i></a>
-            </div>
+            -->
           </div>
         </div>
 
       </div>
-      
     </div>
   </div>
 

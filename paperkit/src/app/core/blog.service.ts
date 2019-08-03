@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
-import { IPostList, IPostModel, IBlogSettings } from './blog.models';
+import { IPostList, IPostModel, IBlogSettings, IAuthor } from './blog.models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class BlogService {
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   getPosts(): Observable<IPostList> {
-    var postsUrl = environment.apiEndpoint + '/api/posts?page=1';
-    var searchUrl = environment.apiEndpoint + '/api/posts/search/';
+    var postsUrl = environment.apiEndpoint + '/api/posts?include=FP&page=1';
+    var searchUrl = environment.apiEndpoint + '/api/posts/search?include=FP';
     
     var page = this.route.snapshot.queryParamMap.get('page');
     var author = this.route.snapshot.queryParamMap.get('author');
@@ -23,7 +23,7 @@ export class BlogService {
     var term = this.route.snapshot.queryParamMap.get('term');
 
     if (page) {
-      postsUrl = environment.apiEndpoint + '/api/posts?page=' + page;
+      postsUrl = environment.apiEndpoint + '/api/posts?include=FP&page=' + page;
     }
 
     if (author) {
@@ -60,6 +60,14 @@ export class BlogService {
     var url = environment.apiEndpoint + '/api/settings';
     return this.http.get<IBlogSettings>(url).pipe(
       tap(data => this.logMessage('Settings: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  getAuthors(): Observable<IAuthor> {
+    var url = environment.apiEndpoint + '/api/authors';
+    return this.http.get<IAuthor>(url).pipe(
+      tap(data => this.logMessage('Authors: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
