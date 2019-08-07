@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     if(f.value && f.value.txtEmail && !f.invalid){
+      this.blogService.subscribe(f.value.txtEmail);
       alert(f.value.txtEmail + ' added to the list. Thank you!');
     }
   }

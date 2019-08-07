@@ -72,6 +72,11 @@ export class BlogService {
     );
   }
 
+  subscribe(str: string) {
+    var url = environment.apiEndpoint + '/api/notifications/subscribe';
+    this.http.put(url, { email: str });
+  }
+
   private logMessage(msg: string){
     if(!environment.production){
       console.log(msg);

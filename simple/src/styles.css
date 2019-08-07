@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+.post-content img {
+  max-width: 100%;
+  margin: 15px 0;
+}
+
+pre { 
+  box-sizing: border-box;
+	width: 100%;
+	padding: 0;
+	margin: 15px 0;
+	overflow: auto;
+	overflow-y: hidden;
+	font-size: 14px;
+	line-height: 20px;
+	background: #efefef;
+  border: 1px solid #777;
+  border-radius: 0.3rem;
+	padding: 10px;
+	color: #fff;
+  background-color: #000;
+}
