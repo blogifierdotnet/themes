@@ -72,9 +72,11 @@ export class BlogService {
     );
   }
 
-  subscribe(str: string) {
+  subscribe(txt: string): Observable<void> {
     var url = environment.apiEndpoint + '/api/notifications/subscribe';
-    this.http.put(url, { email: str });
+    return this.http.put<void>(url, { }, { params: { email: txt } }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   private logMessage(msg: string){
