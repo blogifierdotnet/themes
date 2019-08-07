@@ -17,9 +17,10 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
-              "src/assets",
+              "src/assets/img",
+              "src/assets/data.json",
               "src/favicon.ico",
-              "src/theme.png"
+              "src/screenshot.png"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
