@@ -1,11 +1,12 @@
+//
+// Version 1.0.0 
+//
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-
 import { environment } from '../../environments/environment';
-import { IPostList, IPostModel, IBlogSettings, IAuthor } from './blog.models';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class BlogService {
 
   getPosts(): Observable<IPostList> {
     var postsUrl = environment.apiEndpoint + '/api/posts?include=FP&page=1';
-    var searchUrl = environment.apiEndpoint + '/api/posts/search?include=FP';
+    var searchUrl = environment.apiEndpoint + '/api/posts/search/';
     
     var page = this.route.snapshot.queryParamMap.get('page');
     var author = this.route.snapshot.queryParamMap.get('author');
@@ -95,4 +96,64 @@ export class BlogService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
+}
+
+export interface IBlogSettings {
+  title: string,
+  description: string,
+  itemsPerPage: number,
+  cover: string,
+  logo: string,
+  theme: string,
+  culture: string
+}
+
+export interface IBlogPost {
+  id: number;
+  title: string;
+  description: string;
+  content: string;
+  published: string;
+  categories: string;
+  slug: string;
+  author: IAuthor;
+  cover: string;
+}
+
+export interface IPager {
+  currentPage: number;
+  itemsPerPage: number;
+  total: number;
+  notFound: boolean;
+  newer: number;
+  showNewer: boolean;
+  older: number;
+  showOlder: boolean;
+  linkToNewer: string;
+  linkToOlder: string;
+  routeValue: string;
+  lastPage: number;
+}
+
+export interface IPostList {
+  posts: IBlogPost[];
+  pager: IPager;
+}
+
+export interface IPostModel {
+  blog: IBlogSettings;
+  post: IBlogPost;
+  older: IBlogPost;
+  newer: IBlogPost;
+}
+
+export interface IAuthor {
+  id: number;
+  appUserName: string;
+  email: string;
+  displayName: string;
+  bio: string;
+  avatar: string;
+  isAdmin: boolean,
+  created: string;
 }

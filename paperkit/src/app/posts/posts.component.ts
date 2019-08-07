@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../environments/environment';
-
-import { BlogService } from '../core/blog.service';
-import { IBlogSettings, IPostModel, IAuthor } from '../core/blog.models';
+import { BlogService, IBlogSettings, IPostModel } from '../core/blog.service';
 
 @Component({
   selector: 'app-posts',

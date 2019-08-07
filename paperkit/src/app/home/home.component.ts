@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../core/blog.service';
-import { IBlogSettings, IPostList } from '../core/blog.models';
+import { BlogService, IBlogSettings, IPostList } from '../core/blog.service';
 import { environment } from '../../environments/environment';
 import { NgForm } from '@angular/forms';
 
