@@ -4,5 +4,5 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'http://localhost:63023'
+  apiEndpoint: 'http://blogifier.net'
 };
