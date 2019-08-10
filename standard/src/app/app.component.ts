@@ -13,7 +13,7 @@ export class AppComponent {
   
   ngOnInit(): void {
     this.socialButtons = data.socialButtons;
-    console.log("Json data : ", JSON.stringify(data));
+    // console.log("Json data : ", JSON.stringify(data));
   }
 
   onSubmit(f: NgForm) {
