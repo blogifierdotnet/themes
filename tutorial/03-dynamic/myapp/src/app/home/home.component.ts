@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogService, IPostList } from '../core/blog.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  public postList: IPostList;
+  constructor(private blogService: BlogService) { }
 
   ngOnInit() {
+    this.blogService.getPosts().subscribe(
+      result => { this.postList = result; }
+    );
   }
-
 }
