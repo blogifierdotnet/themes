@@ -1,0 +1,12 @@
+<div *ngIf="postModel" class="jumbotron text-center">
+  <h1>{{postModel.post.title}}</h1>
+</div>
+
+<article>
+  <div class="container">
+    <div *ngIf="postModel" class="row">
+      <div [innerHTML]="postModel.post.content" class="col-lg-8 col-md-10 mx-auto">
+      </div>
+    </div>
+  </div>
+</article>
