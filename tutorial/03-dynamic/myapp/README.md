@@ -2,10 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
-It contains files for [Angular Theme for Blogifier - Static Build](http://rtur.net/posts/angular-theme-for-blogifier-static-build) tutorial which showcases adopting HTML template to be used in Angular CLI application that can be deployed and used as Blogifier theme.
-
-- clean-blog - HTML template
-- myapp - Angular CLI application built using clean-blog template
+It contains files for [Angular Theme for Blogifier - Dynamic Data](http://rtur.net/posts/angular-theme-for-blogifier-dynamic-data) tutorial that shows pulling data from Blogifier via APIs into Angular CLI application running as Blogifier theme.
 
 ## Development server
 
