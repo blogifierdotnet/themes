@@ -11,6 +11,7 @@ import { PostsComponent } from './posts/posts.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SearchComponent } from './core/search/search.component';
 import { NewsletterComponent } from './core/newsletter/newsletter.component';
+import { ContactComponent } from './core/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NewsletterComponent } from './core/newsletter/newsletter.component';
     PostsComponent,
     NotfoundComponent,
     SearchComponent,
-    NewsletterComponent
+    NewsletterComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
