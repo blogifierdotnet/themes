@@ -1,25 +1,17 @@
-<div class="card card-profile card-plain">
-	<div class="card-block">
-		<h4 class="card-title">Stay in touch</h4>
-		<p class="card-description text-center">
-			Join our subscribers list to get the latest news and updates directly in your inbox.
-		</p>
+<p>
+	Join our subscribers list to get the latest updates directly in your inbox.
+</p>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="register-form">
+	<div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+		<div class="input-group-prepend">
+			<span class="input-group-text">
+				<i class="fa fa-envelope"></i>
+			</span>
+		</div>
+		<input type="email" name="txtEmail" ngModel [email]="true" class="form-control" placeholder="Email"
+			(focus)="focus=true" (blur)="focus=false" />
+		<div class="input-group-append btn-newsletter">
+			<button class="btn btn-secondary" type="submit">Subscribe</button>
+		</div>
 	</div>
-	<div class="card-footer text-center">
-		<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="register-form">
-			<div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-				<div class="input-group-prepend">
-					<span class="input-group-text">
-						<i class="fa fa-envelope"></i>
-					</span>
-				</div>
-				<input type="email" name="txtEmail" ngModel [email]="true" class="form-control" placeholder="Email"
-					(focus)="focus=true" (blur)="focus=false" />
-
-				<div class="input-group-append btn-newsletter">
-					<button class="btn btn-secondary" type="submit">Subscribe</button>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
+</form>
