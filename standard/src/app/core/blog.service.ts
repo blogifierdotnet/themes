@@ -1,5 +1,6 @@
 //
-// Version 1.0.0 
+// Version 1.0.0
+// Version 1.0.1 - added contact and showMessage
 //
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -78,7 +79,23 @@ export class BlogService {
     return this.http.put<void>(url, { }, { params: { email: txt } }).pipe(
       catchError(this.handleError)
     );
-  }
+	}
+	
+	contact(contact: IContact): Observable<void> {
+    var url = environment.apiEndpoint + '/api/notifications/contact';
+    return this.http.post<void>(url, contact).pipe(
+      catchError(this.handleError)
+    );
+	}
+	
+	// simple alert, customize for your needs here
+	// for example, display toastr notification etc
+	showMessage(msg: string, reload: boolean = false){
+		alert(msg);
+		if(reload){
+			setTimeout(function(){ location.reload(); }, 2000);
+		}
+	}
 
   private logMessage(msg: string){
     if(!environment.production){
@@ -154,6 +171,12 @@ export interface IAuthor {
   displayName: string;
   bio: string;
   avatar: string;
-  isAdmin: boolean,
+  isAdmin: boolean;
   created: string;
+}
+
+export interface IContact {
+	name: string;
+	email: string;
+	content: string;
 }

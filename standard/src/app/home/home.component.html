@@ -1,39 +1,64 @@
 <ng-template [ngIf]="blogSettings">
-  <div class="page-cover" *ngIf="blogCover" [ngStyle]="{'background-image':'url('+blogCover+')'}">
-    <h1 class="page-cover-title">
-      <a href="/">{{blogSettings.title}}</a>
-    </h1>
-    <p class="page-cover-desc">{{blogSettings.description}}</p>
-  </div>
-  <div class="page-content">
-    <div *ngIf="postList" class="container">
-      <article *ngFor="let post of postList.posts" class="post">
-        <div class="post-cover">
-          <img src="{{apiRoot}}{{post.cover}}" alt="post.title">
-          <span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
-        </div>
-        <h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
-        <div class="post-meta">
-          <a class="post-meta-author" href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a>
-          <time class="post-meta-time">/ {{toDate(post.published)}}</time>
-        </div>
-        <div [innerHTML]="post.description" class="post-description"></div>
-        <a class="post-more btn btn-rounded btn-dark" href="posts/{{post.slug}}">Read</a>
-      </article>
-    </div>
-  </div>
-  <ul *ngIf="postList && (postList.pager.showNewer || postList.pager.showOlder)"
-    class="pagination justify-content-center">
-    <li *ngIf="postList.pager.showOlder" class="item item-prev">
-      <a class="item-link" href="?page={{postList.pager.older}}">
-        <i class="item-icon fa fa-angle-left"></i>
-      </a>
-    </li>
-    <li *ngIf="postList.pager.showNewer" class="item item-next">
-      <a class="item-link" href="?page={{postList.pager.newer}}">
-        <i class="item-icon fa fa-angle-right"></i>
-      </a>
-    </li>
-  </ul>
-  <app-footer></app-footer>
+	<div class="page-cover" *ngIf="blogCover" [ngStyle]="{'background-image':'url('+blogCover+')'}">
+		<h1 class="page-cover-title">
+			<a href="/">{{blogSettings.title}}</a>
+		</h1>
+		<p class="page-cover-desc">{{blogSettings.description}}</p>
+	</div>
+	<div class="page-content">
+		<div *ngIf="postList" class="container">
+			<article *ngFor="let post of postList.posts" class="post">
+				<div class="post-cover">
+					<img src="{{apiRoot}}{{post.cover}}" alt="post.title">
+					<span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
+				</div>
+				<h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
+				<div class="post-meta">
+					<a class="post-meta-author" href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a>
+					<time class="post-meta-time">/ {{toDate(post.published)}}</time>
+				</div>
+				<div [innerHTML]="post.description" class="post-description"></div>
+				<a class="post-more btn btn-rounded btn-dark" href="posts/{{post.slug}}">Read</a>
+			</article>
+		</div>
+
+		<ul *ngIf="postList && (postList.pager.showNewer || postList.pager.showOlder)"
+			class="pagination justify-content-center">
+			<li *ngIf="postList.pager.showOlder" class="item item-prev">
+				<a class="item-link" href="?page={{postList.pager.older}}">
+					<i class="item-icon fa fa-angle-left"></i>
+				</a>
+			</li>
+			<li *ngIf="postList.pager.showNewer" class="item item-next">
+				<a class="item-link" href="?page={{postList.pager.newer}}">
+					<i class="item-icon fa fa-angle-right"></i>
+				</a>
+			</li>
+		</ul>
+
+		<div id="newsletter" class="container">
+			<div id="newsletter-form" class="jumbotron">
+				<h2 id="ttlNewsletter" class="newsletter-title" style="display:none">Thank you!</h2>
+				<form id="frmNewsletter" (ngSubmit)="onSubmit()">
+					<div class="form-group">
+						<h2 class="newsletter-title">Newsletter</h2>
+						<div class="form-group">
+							<input id="email" name="email" [(ngModel)]="emailModel" #email="ngModel" required email type="text"
+								placeholder="Enter Email" class="form-control">
+							<small *ngIf="(email.dirty || email.touched) && email.errors && email.errors.required" class="text-danger">
+								Email is required.</small>
+							<small *ngIf="(email.dirty || email.touched) && email.errors && email.errors.email" class="text-danger">Must
+								be valid email.</small>
+						</div>
+						<small id="emailHelp" class="form-text text-muted">Join our subscribers list to get the latest news and
+							updates directly in your inbox.</small>
+					</div>
+					<button [disabled]="email.errors" type="submit" class="btn btn-subscribe btn-rounded btn-dark">Subscribe</button>
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+	<app-footer></app-footer>
 </ng-template>
