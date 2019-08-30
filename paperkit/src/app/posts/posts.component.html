@@ -1,74 +1,81 @@
 <div class="wrapper" *ngIf="postModel">
-  <div class="page-header page-header-xs" data-parallax="true" *ngIf="postCover"
-    [ngStyle]="{'background-image':'url('+postCover+')'}">
-    <div class="filter"></div>
-  </div>
-  <div class="section profile-content">
-    <div class="container">
-      <div class="owner">
-        <div class="avatar">
-          <img src="{{avatarImg}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-        </div>
-        <div class="name">
-          <h4 class="title">{{postModel.post.author.displayName}} / {{toDate(postModel.post.published)}}<br /></h4>
-          <h1>{{postModel.post.title}}</h1>
-          <h6 *ngIf="postModel.post.categories" class="description">
-            <i class="fa fa-tags"></i>
-            <span *ngFor="let tag of postModel.post.categories.split(',')">
-              &nbsp; <a href="?category={{tag}}"> {{tag}} </a>
-            </span>
-          </h6>
-        </div>
-      </div>
-      <div class="row" class="post-content">
-        <div class="col-md-10 ml-auto mr-auto text-center">
-          <div [innerHTML]="postModel.post.content" class="text-left"></div>
-          <br /><br />
-          <ng-template [ngIf]="postModel.older || postModel.newer">
-            <a *ngIf="postModel.older" href="posts/{{postModel.older.slug}}" title="{{postModel.older.title}}"
-              class="btn btn-outline-default btn-round"><i class="fa fa-angle-left"></i> Older</a>
-            <a *ngIf="postModel.newer" href="posts/{{postModel.newer.slug}}" title="{{postModel.newer.title}}"
-              class="btn btn-outline-default btn-round">Newer <i class="fa fa-angle-right"></i></a>
-          </ng-template>
-        </div>
-      </div>
-      <br />
+	<div class="page-header page-header-xs" data-parallax="true" *ngIf="postCover"
+		[ngStyle]="{'background-image':'url('+postCover+')'}">
+		<div class="filter"></div>
+	</div>
+	<div class="section profile-content">
+		<div class="container">
+			<div class="owner">
+				<div class="avatar">
+					<img src="{{avatarImg}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+				</div>
+				<div class="name">
+					<h4 class="title">{{postModel.post.author.displayName}} / {{toDate(postModel.post.published)}}<br /></h4>
+					<h1>{{postModel.post.title}}</h1>
+					<h6 *ngIf="postModel.post.categories" class="description">
+						<i class="fa fa-tags"></i>
+						<span *ngFor="let tag of postModel.post.categories.split(',')">
+							&nbsp; <a href="?category={{tag}}"> {{tag}} </a>
+						</span>
+					</h6>
+				</div>
+			</div>
+			<div class="row" class="post-content">
+				<div class="col-md-10 ml-auto mr-auto text-center">
+					<div [innerHTML]="postModel.post.content" class="text-left"></div>
+					<br /><br />
+					<ng-template [ngIf]="postModel.older || postModel.newer">
+						<a *ngIf="postModel.older" href="posts/{{postModel.older.slug}}" title="{{postModel.older.title}}"
+							class="btn btn-outline-default btn-round"><i class="fa fa-angle-left"></i> Older</a>
+						<a *ngIf="postModel.newer" href="posts/{{postModel.newer.slug}}" title="{{postModel.newer.title}}"
+							class="btn btn-outline-default btn-round">Newer <i class="fa fa-angle-right"></i></a>
+					</ng-template>
+				</div>
+			</div>
+			<br />
 
-    </div>
-  </div>
+		</div>
+	</div>
 
-  <div class="section section-dark text-center">
-    <div class="container">
-      <h2 class="title">Let's get to know our authors</h2>
-      <div *ngIf="authors" class="row">
+	<div class="section section-dark text-center">
+		<div class="container">
 
-        <div *ngFor="let author of authors" class="col-md-4 ml-auto">
-          <div class="card card-profile card-plain">
-            <div class="card-avatar">
-              <a href="?author={{author.appUserName}}"><img src="{{webRoot}}/{{author.avatar}}"
-                  alt="{{author.displayName}}"></a>
-            </div>
-            <div class="card-block">
-              <a href="?author={{author.appUserName}}">
-                <div class="author">
-                  <h4 class="card-title">{{author.displayName}}</h4>
-                </div>
-              </a>
-              <p class="card-description text-center">
-                {{author.bio}}
-              </p>
-            </div>
-            <!--
-            <div class="card-footer text-center">
-              <a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
-            </div>
-            -->
-          </div>
-        </div>
+			<div class="row">
+				<div class="col-md-6 ml-auto mr-auto">
+					<h2 class="title">Contact us</h2>
+					<form (ngSubmit)="onSubmit()" class="form-horizontal">
+						<div class="form-group">
+							<input id="name" name="name" [(ngModel)]="contact.name" #name="ngModel" required type="text"
+								placeholder="Your Name" class="form-control">
+							<div *ngIf="(name.dirty || name.touched) && name.errors && name.errors.required" class="text-danger">Name
+								is
+								required.</div>
+						</div>
+						<div class="form-group">
+							<input id="email" name="email" [(ngModel)]="contact.email" #email="ngModel" required email type="text"
+								placeholder="Email Address" class="form-control">
+							<div *ngIf="(email.dirty || email.touched) && email.errors && email.errors.required" class="text-danger">
+								Email
+								is required.</div>
+							<div *ngIf="(email.dirty || email.touched) && email.errors && email.errors.email" class="text-danger">Must
+								be
+								valid email.</div>
+						</div>
+						<div class="form-group">
+							<textarea id="content" name="content" [(ngModel)]="contact.content" #content="ngModel" required
+								class="form-control" placeholder="Enter your massage here." rows="7"></textarea>
+							<div *ngIf="(content.dirty || content.touched) && content.errors && content.errors.required"
+								class="text-danger">Message is required.</div>
+						</div>
+						<div class="form-group">
+							<button [disabled]="email.errors || name.errors || content.errors" type="submit"
+								class="btn btn-outline-neutral btn-round">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
 
-      </div>
-    </div>
-  </div>
+		</div>
+	</div>
 
 </div>

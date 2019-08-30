@@ -1,77 +1,118 @@
 <div *ngIf="blogSettings" class="wrapper">
-  <div class="page-header section-dark" *ngIf="blogCover" [ngStyle]="{'background-image':'url('+blogCover+')'}">
-    <div class="filter"></div>
-    <div class="content-center">
-      <div class="container">
-        <div class="title-brand">
-          <div class="angular-logo">
-            <img src="{{blogLogo}}" alt="">
-          </div>
-          <h1 class="presentation-title">{{blogSettings.title}}</h1>
-        </div>
-        <h2 class="presentation-subtitle text-center">{{blogSettings.description}}</h2>
-      </div>
-    </div>
-  </div>
+	<div class="page-header section-dark" *ngIf="blogCover" [ngStyle]="{'background-image':'url('+blogCover+')'}">
+		<div class="filter"></div>
+		<div class="content-center">
+			<div class="container">
+				<div class="title-brand">
+					<div class="angular-logo">
+						<img src="{{blogLogo}}" alt="">
+					</div>
+					<h1 class="presentation-title">{{blogSettings.title}}</h1>
+				</div>
+				<h2 class="presentation-subtitle text-center">{{blogSettings.description}}</h2>
+			</div>
+		</div>
+	</div>
 
-  <div class="main">
+	<div class="main">
 
-    <div class="section section-dark">
-      <div class="container">
-        <div class="row example-page" *ngIf="postList">
+		<div class="section section-dark">
+			<div class="container">
+				<div class="row example-page" *ngIf="postList">
 
-          <div *ngFor="let post of postList.posts" class="col-md-6 text-center" routerlinkactive="active">
-            <a href="posts/{{post.slug}}">
-              <img alt="Rounded Image" class="img-rounded img-responsive" src="{{apiRoot}}{{post.cover}}" style="width: 100%">
-              <span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
-              <h4 class="card-title">{{ post.title }}</h4>
-            </a>
-            <!-- <a class="btn btn-outline-neutral btn-round" href="posts/{{post.slug}}">Read More</a> -->
-          </div>
+					<div *ngFor="let post of postList.posts" class="col-md-6 text-center" routerlinkactive="active">
+						<a href="posts/{{post.slug}}">
+							<img alt="Rounded Image" class="img-rounded img-responsive" src="{{apiRoot}}{{post.cover}}"
+								style="width: 100%">
+							<span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
+							<h4 class="post-card-title">{{ post.title }}</h4>
+						</a>
+						<!-- <a class="btn btn-outline-neutral btn-round" href="posts/{{post.slug}}">Read More</a> -->
+					</div>
 
-        </div>
+				</div>
 
-        <div *ngIf="postList && (postList.pager.showNewer || postList.pager.showOlder)" class="row">
-          <div class="col-md-10 ml-auto mr-auto text-center">
-            <a *ngIf="postList.pager.showOlder" href="?page={{postList.pager.older}}" title="Older"
-              class="btn btn-outline-neutral btn-round"><i class="fa fa-angle-left"></i> Older</a>
-            <a *ngIf="postList.pager.showNewer" href="?page={{postList.pager.newer}}" title="Newer"
-              class="btn btn-outline-neutral btn-round">Newer
-              <i class="fa fa-angle-right"></i></a>
-          </div>
-        </div>
+				<div *ngIf="postList && (postList.pager.showNewer || postList.pager.showOlder)" class="row">
+					<div class="col-md-10 ml-auto mr-auto text-center">
+						<a *ngIf="postList.pager.showOlder" href="?page={{postList.pager.older}}" title="Older"
+							class="btn btn-outline-neutral btn-round"><i class="fa fa-angle-left"></i> Older</a>
+						<a *ngIf="postList.pager.showNewer" href="?page={{postList.pager.newer}}" title="Newer"
+							class="btn btn-outline-neutral btn-round">Newer
+							<i class="fa fa-angle-right"></i></a>
+					</div>
+				</div>
 
-        <div class="row">
-          <div class="col-md-6 ml-auto mr-auto">
-            <div class="card card-profile card-plain">
-              <div class="card-block">
-                <h4 class="card-title">Stay in touch</h4>
-                <p class="card-description text-center">
-                  Join our subscribers list to get the latest news and updates directly in your inbox.
-                </p>
-              </div>
-              <div class="card-footer text-center">
-                <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="register-form">
-                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="nc-icon nc-email-85"></i>
-                      </span>
-                    </div>
-                    <input type="email" name="txtEmail" ngModel [email]="true" class="form-control" placeholder="Email"
-                      (focus)="focus=true" (blur)="focus=false" />
-                  </div>
-                  <div class="btn-newsletter">
-                    <button type="submit" class="btn btn-outline-neutral btn-round">Subscribe</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+			</div>
+		</div>
 
-      </div>
-    </div>
+		<div class="section text-center">
+			<div class="container">
+				<h2 class="title">Let's get to know our authors</h2>
+				<div *ngIf="authors" class="row">
 
-  </div>
+					<div *ngFor="let author of authors" class="col-md-4 ml-auto">
+						<div class="card card-profile card-plain">
+							<div class="card-avatar">
+								<a href="?author={{author.appUserName}}"><img src="{{webRoot}}/{{author.avatar}}"
+										alt="{{author.displayName}}"></a>
+							</div>
+							<div class="card-block">
+								<a href="?author={{author.appUserName}}">
+									<div class="author">
+										<h4 class="card-title">{{author.displayName}}</h4>
+									</div>
+								</a>
+								<p class="card-description text-center">
+									{{author.bio}}
+								</p>
+							</div>
+							<!--
+							<div class="card-footer text-center">
+								<a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
+								<a href="#" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
+							</div>
+							-->
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="section section-dark">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-md-6 ml-auto mr-auto">
+						<div class="card card-newsletter card-plain">
+							<div class="card-block text-center">
+								<h2 class="title">Stay in touch</h2>
+								<p class="card-description">
+									Join our subscribers list to get the latest news and updates directly in your inbox.
+								</p>
+							</div>
+							<div class="card-footer text-center">
+								<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="register-form">
+									<div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+										<div class="input-group-prepend">
+											<span class="input-group-text">
+												<i class="nc-icon nc-email-85"></i>
+											</span>
+										</div>
+										<input type="email" name="txtEmail" ngModel [email]="true" class="form-control" placeholder="Email"
+											(focus)="focus=true" (blur)="focus=false" />
+									</div>
+									<div class="btn-newsletter">
+										<button type="submit" class="btn btn-outline-neutral btn-round">Subscribe</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
 </div>

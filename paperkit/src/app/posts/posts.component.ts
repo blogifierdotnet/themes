@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { BlogService, IBlogSettings, IPostModel } from '../core/blog.service';
+import { BlogService, IBlogSettings, IPostModel, IContact } from '../core/blog.service';
 
 @Component({
   selector: 'app-posts',
@@ -18,12 +18,14 @@ export class PostsComponent implements OnInit {
   public postCover: string;
   public avatarImg: string;
   public webRoot: string;
-  errorMessage = '';
+	errorMessage = '';
+	public contact: IContact;
 
   constructor(private blogService: BlogService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.webRoot = environment.apiEndpoint;
+		this.webRoot = environment.apiEndpoint;
+		this.contact = { name: "", email: "", content: "" };
     
     this.blogService.getSettings().subscribe(
       result => {
@@ -50,7 +52,18 @@ export class PostsComponent implements OnInit {
         error => this.errorMessage = <any>error
       );
     }
-  }
+	}
+	
+	onSubmit() {
+		if (this.contact.name && this.contact.email && this.contact.content) {
+			this.blogService.contact(this.contact).subscribe(
+				() => {
+					this.contact = { name: "", email: "", content: "" };
+					alert('Thank you!');
+				}
+			);
+		}
+	}
 
   toDate(date): string {
     var monthNames = ["January", "February", "March", "April", "May", "June",

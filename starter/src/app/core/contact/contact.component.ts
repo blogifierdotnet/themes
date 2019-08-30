@@ -19,13 +19,12 @@ export class ContactComponent implements OnInit {
 
 	onSubmit() {
 		if (this.contact.name && this.contact.email && this.contact.content) {
-			//this.blogService.contact(this.contact).subscribe(
-			//	() => {
-			//		this.contact = { name: "", email: "", content: "" };
-			//		alert('Thank you!');
-			//	}
-			//	);
-			this.blogService.showMessage("done", true);
+			this.blogService.contact(this.contact).subscribe(
+				() => {
+					this.contact = { name: "", email: "", content: "" };
+					alert('Thank you!');
+				}
+			);
 		}
 	}
 
