@@ -32,10 +32,10 @@
 
 				<hr />
 				<ul class="pagination justify-content-between">
-					<li *ngIf="postList && postList.pager.older" class="item item-prev">
+					<li *ngIf="postList && postList.pager.showOlder" class="item item-prev">
 						<a class="item-link" href="?page={{postList.pager.older}}">Older Posts</a>
 					</li>
-					<li *ngIf="postList && postList.pager.newer" class="item item-next">
+					<li *ngIf="postList && postList.pager.showNewer" class="item item-next">
 						<a class="item-link" href="?page={{postList.pager.newer}}">Newer Posts</a>
 					</li>
 				</ul>
@@ -60,15 +60,12 @@
 				</div>
 				<div class="widget widget-social">
 					<h4 class="widget-title"><i class="widget-icon fa fa-share-alt"></i><span>Follow Us</span></h4>
-					<div class="widget-body">
-						<a class="widget-social-fb" target="_blank" href="https://facebook.com/blogifierdotnet"><i
-								class="fa fa-facebook"></i> <span>Facebook</span></a>
-						<a class="widget-social-tw" target="_blank" href="https://twitter.com/blogifierdotnet"><i
-								class="fa fa-twitter"></i> <span>Twitter</span></a>
-						<a class="widget-social-in" target="_blank" href="https://instagram.com/blogifierdotnet"><i
-								class="fa fa-instagram"></i> <span>Instagram</span></a>
-						<a class="widget-social-rss" target="_blank" href="/feed/rss"><i class="fa fa-rss"></i>
-							<span>Subscribe</span></a>
+					<div *ngIf="socialButtons" class="widget-body">
+						<a *ngFor="let btn of socialButtons" 
+							class="{{btn.class}}" target="_blank" 
+							href="{{btn.link}}">
+							<i class="fa {{btn.icon}}"></i> <span>{{btn.name}}</span>
+						</a>
 					</div>
 				</div>
 

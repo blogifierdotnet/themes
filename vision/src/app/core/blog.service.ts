@@ -2,6 +2,7 @@
 // Version 1.0.0
 // Version 1.0.1 - added contact and showMessage
 // Version 1.0.2 - added categories
+// Version 1.0.3 - added recent posts
 //
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -49,6 +50,14 @@ export class BlogService {
         catchError(this.handleError)
       );
     }
+	}
+	
+	getRecent(): Observable<IPostList> {
+    var postsUrl = environment.apiEndpoint + '/api/posts?include=FP&page=1';
+		return this.http.get<IPostList>(postsUrl).pipe(
+			tap(data => this.logMessage('Recent posts: ' + JSON.stringify(data))),
+			catchError(this.handleError)
+		);
   }
 
   getPost(slug: string): Observable<IPostModel>{

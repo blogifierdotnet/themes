@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BlogService, IPostList, IBlogSettings } from '../core/blog.service';
 import { environment } from '../../environments/environment';
+import data from '../../assets/data.json';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +14,12 @@ export class HomeComponent implements OnInit {
 
   postList: IPostList;
 	blogSettings: IBlogSettings;
+	socialButtons: object;
 	root: string;
   
   ngOnInit() {
 		this.root = environment.apiEndpoint;
+		this.socialButtons = data.socialButtons;
 
     this.blogService.getPosts().subscribe(
       result => { this.postList = result; }

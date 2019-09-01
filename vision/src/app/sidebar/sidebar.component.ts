@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
   constructor(private blogService: BlogService, private route: ActivatedRoute) { }
 
 	ngOnInit() {
-    this.blogService.getPosts().subscribe(
+    this.blogService.getRecent().subscribe(
       result => { this.posts = result.posts; }
 		);
 		this.blogService.getCategories().subscribe(

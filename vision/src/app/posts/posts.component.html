@@ -33,12 +33,12 @@
 							<ul *ngIf="postModel.older || postModel.newer" class="pagination justify-content-between">
 								<li *ngIf="postModel.older" class="item item-prev">
 									<a class="item-link" href="posts/{{postModel.older.slug}}" title="{{postModel.older.title}}">
-										Previous Post
+										Older Post
 									</a>
 								</li>
 								<li *ngIf="postModel.newer" class="item item-next">
 									<a class="item-link" href="posts/{{postModel.newer.slug}}" title="{{postModel.newer.title}}">
-										Next Post
+										Newer Post
 									</a>
 								</li>
 							</ul>
