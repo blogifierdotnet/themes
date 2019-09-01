@@ -1,4 +1,47 @@
-<article *ngIf="model">
-	<h1>{{model.post.title}}</h1>
-	<div [innerHTML]="model.post.content"></div>
-</article>
+<div *ngIf="model" class="page-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 pl-5">
+				<article class="post-single">
+
+					<section class="container">
+						<div class=" post-body">
+							<header class="post-header">
+								<time class="post-meta-time">{{model.post.published | date :'longDate'}}</time>
+								<h2 class="post-title">{{model.post.title}}</h2>
+								<img src="{{root}}/{{model.post.cover}}" alt="{{model.post.title}}" class="post-cover" />
+								<div class="d-flex mb-5">
+									<div class="post-meta">
+										<a href="?author={{model.post.author.appUserName}}">
+												<img class="post-meta-img" src="{{root}}/{{model.post.author.avatar}}"
+												alt="{{model.post.author.displayName}}" />
+											<span class="post-meta-author">{{model.post.author.displayName}}</span>
+										</a>
+									</div>
+									<ul class="post-categories ml-auto">
+										<li><a href="categories/cat">cat</a></li>
+									</ul>
+								</div>
+
+							</header>
+							<div [innerHTML]="model.post.content" class="post-content"></div>
+
+							<ul *ngIf="model.older || model.newer" class="pagination justify-content-between">
+								<li *ngIf="model.older" class="item item-prev m-0">
+									<a class="item-link" href="posts/{{model.older.slug}}" title="{{model.older.title}}">
+										<i class="fa fa-chevron-left mr-3"></i> Previous Post
+									</a>
+								</li>
+								<li *ngIf="model.newer" class="item item-next m-0">
+									<a class="item-link" href="posts/{{model.newer.slug}}" title="{{model.newer.title}}">
+										Next Post <i class="fa fa-chevron-right ml-3"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</article>
+			</div>
+		</div>
+	</div>
+</div>
