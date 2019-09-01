@@ -8,10 +8,16 @@ import { BlogService, IBlogSettings } from './core/blog.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private blogService: BlogService, private titleService: Title) { }
+
+	constructor(private blogService: BlogService, private titleService: Title) { }
+	
+	settings: IBlogSettings;
+	dt : Date = new Date();
+
   ngOnInit() {
     this.blogService.getSettings().subscribe(
       result => {
+				this.settings = result;
         this.titleService.setTitle(result.title);
       }
     );

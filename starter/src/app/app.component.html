@@ -1,26 +1,18 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
-	<div class="container-fluid">
-		<a href="/" class="navbar-brand mr-3">Home</a>
-		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<div class="navbar-nav ml-auto">
-				<a href="account/admin" class="nav-item nav-link">Admin</a>
-			</div>
-		</div>
+<div *ngIf="settings" class="container-fluid">
+	<div class="jumbotron">
+		<a href="/">
+			<h1>{{settings.title}}</h1>
+		</a>
+		<p>{{settings.description}}</p>
 	</div>
-</nav>
-<div class="container-fluid">
+
 	<router-outlet></router-outlet>
 	<hr>
+
 	<footer>
 		<div class="row">
-			<div class="col-md-6">
-				<p>Copyright &copy; 2019 My Site</p>
-			</div>
-			<div class="col-md-6 text-md-right">
-				<a href="contact" class="text-dark">Contact us</a>
+			<div class="col-md-12 text-center">
+				<p>Copyright &copy; {{dt | date: 'yyyy'}} {{settings.title}}</p>
 			</div>
 		</div>
 	</footer>

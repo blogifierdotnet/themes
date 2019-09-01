@@ -1,30 +1,8 @@
-<div *ngIf="blogSettings" class="jumbotron">
-	<h1>{{blogSettings.title}}</h1>
-	<p class="lead">{{blogSettings.description}}</p>
-</div>
-
-<div *ngIf="postList">
-	<div *ngFor="let post of postList.posts">
+<div *ngIf="model">
+	<div *ngFor="let post of model.posts">
 		<a href="posts/{{post.slug}}">
 			<h2 class="post-title">{{post.title}}</h2>
 		</a>
-		<p [innerHTML]="post.description"></p>
 		<hr>
-	</div>
-	<!-- Pager -->
-	<div class="clearfix">
-		<a *ngIf="postList && postList.pager.showNewer" class="btn btn-primary float-left"
-			href="?page={{postList.pager.newer}}">&larr; Newer Posts</a>
-		<a *ngIf="postList && postList.pager.showOlder" class="btn btn-primary float-right"
-			href="?page={{postList.pager.older}}">Older Posts &rarr;</a>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-sm-6">
-		<app-newsletter></app-newsletter>
-	</div>
-	<div class="col-sm-6">
-		<app-search></app-search>
 	</div>
 </div>
