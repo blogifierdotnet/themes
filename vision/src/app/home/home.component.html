@@ -1,0 +1,85 @@
+<div class="page-content">
+	<div class="container">
+		<div *ngIf="blogSettings" class="row">
+
+			<aside class="col-sm-3">
+				<app-sidebar></app-sidebar>
+			</aside>
+
+			<div *ngIf="postList" class="col-sm-6 pl-5  pr-5">
+
+				<article *ngFor="let post of postList.posts" class="post">
+					<div class="post-cover">
+
+						<ul *ngIf="post.categories" class="post-categories">
+							<li *ngFor="let tag of post.categories.split(',')"><a href="?category={{tag}}"> {{tag}} </a></li>
+						</ul>
+
+						<a href="posts/{{post.slug}}">
+							<img src="{{root}}/{{post.cover}}" alt="{{post.title}}">
+						</a>
+						<span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
+
+					</div>
+					<h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
+					<div class="post-meta">
+						<time class="post-meta-time">{{ post.published | date :'longDate'}} </time>
+
+					</div>
+					<div [innerHTML]="post.description" class="post-description"></div>
+					<a href="posts/{{post.slug}}" class="post-more">Read More</a>
+				</article>
+
+				<hr />
+				<ul class="pagination justify-content-between">
+					<li *ngIf="postList && postList.pager.older" class="item item-prev">
+						<a class="item-link" href="?page={{postList.pager.older}}">Older Posts</a>
+					</li>
+					<li *ngIf="postList && postList.pager.newer" class="item item-next">
+						<a class="item-link" href="?page={{postList.pager.newer}}">Newer Posts</a>
+					</li>
+				</ul>
+			</div>
+
+			<aside class="col-sm-3">
+
+				<div class="widget widget-newsletter">
+					<h4 class="widget-title"><i class="widget-icon fa fa-telegram"></i><span>Newsletter</span></h4>
+					<div class="widget-body">
+						<p>Subscribe to our newsletter to get latest posts delivered directly to your inbox.</p>
+						<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-group">
+							<div id="newsletter-form">
+								<input type="email" name="txtEmail" ngModel [email]="true" placeholder="someone@example.com">
+								<button type="submit">Subscribe</button>
+							</div>
+							<div id="newsletter-msg" style="display: none">
+								Thank you!
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="widget widget-social">
+					<h4 class="widget-title"><i class="widget-icon fa fa-share-alt"></i><span>Follow Us</span></h4>
+					<div class="widget-body">
+						<a class="widget-social-fb" target="_blank" href="https://facebook.com/blogifierdotnet"><i
+								class="fa fa-facebook"></i> <span>Facebook</span></a>
+						<a class="widget-social-tw" target="_blank" href="https://twitter.com/blogifierdotnet"><i
+								class="fa fa-twitter"></i> <span>Twitter</span></a>
+						<a class="widget-social-in" target="_blank" href="https://instagram.com/blogifierdotnet"><i
+								class="fa fa-instagram"></i> <span>Instagram</span></a>
+						<a class="widget-social-rss" target="_blank" href="/feed/rss"><i class="fa fa-rss"></i>
+							<span>Subscribe</span></a>
+					</div>
+				</div>
+
+
+				<p class="blog-copyright">Copyright © 2019. Powered by <a
+						href="https://github.com/blogifierdotnet/Blogifier" data-toggle="tooltip" target="_blank"
+						title="Blogifier">Blogifier</a>. Designed by <a href="https://francis.bio/"
+						target="_blank" rel="nofollow">Francis</a>.</p>
+
+			</aside>
+
+		</div>
+	</div>
+</div>

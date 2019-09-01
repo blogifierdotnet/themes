@@ -1,0 +1,7 @@
+<p>Search posts</p>
+<div class="input-group mb-3">
+	<input type="text" class="form-control" [(ngModel)]="term" (keyup.enter)="search()" placeholder="Search">
+	<div class="input-group-append">
+		<button (click)="search()" class="btn btn-secondary" type="submit">Go</button>
+	</div>
+</div>
