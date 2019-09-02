@@ -10,7 +10,7 @@
 			<div class="carousel-inner">
 				<!-- First one has active class -->
 				<div class="carousel-item active">
-					<img src="{{root}}/data/admin/cover-blog.png" class="d-block w-100" alt="[TITLE]">
+					<img src="{{root}}/data/admin/cover-blog.png" class="d-block w-100" alt="">
 					<div class="carousel-caption d-none d-md-block">
 						<h2>Welcome to Blogifier!</h2>
 						<p>By Administrator On September 11, 2018</p>
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="{{root}}/lib/img/cover.png" class="d-block w-100" alt="[TITLE]">
+					<img src="{{root}}/lib/img/cover.png" class="d-block w-100" alt="">
 					<div class="carousel-caption d-none d-md-block">
 						<h2>Blogifier 2.1 Released</h2>
 						<p>By Administrator On September 11, 2018</p>
@@ -27,7 +27,7 @@
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="{{root}}/lib/img/cover.png" class="d-block w-100" alt="[TITLE]">
+					<img src="{{root}}/lib/img/cover.png" class="d-block w-100" alt="">
 					<div class="carousel-caption d-none d-md-block">
 						<h2>How to Remove Vertical MiniMap in Visual Studio Proper</h2>
 						<p>By Administrator On September 11, 2018</p>
@@ -47,7 +47,6 @@
 		</div>
 
 		<div class="row">
-
 			<div *ngFor="let post of model.posts" class="col-sm-6">
 				<article class="post">
 					<a class="post-cover-link" href="posts/{{post.slug}}">

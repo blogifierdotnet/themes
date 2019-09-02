@@ -11,6 +11,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { SearchComponent } from './core/search/search.component';
 import { NewsletterComponent } from './core/newsletter/newsletter.component';
 import { ContactComponent } from './core/contact/contact.component';
+import { CategoriesComponent } from './core/categories/categories.component';
+import { RecentpostsComponent } from './core/recentposts/recentposts.component';
+import { SocialbuttonsComponent } from './core/socialbuttons/socialbuttons.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { ContactComponent } from './core/contact/contact.component';
     NotfoundComponent,
     SearchComponent,
     NewsletterComponent,
-    ContactComponent
+    ContactComponent,
+    CategoriesComponent,
+    RecentpostsComponent,
+    SocialbuttonsComponent
   ],
   imports: [
     BrowserModule,

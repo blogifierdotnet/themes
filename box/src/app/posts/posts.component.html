@@ -18,9 +18,11 @@
 											<span class="post-meta-author">{{model.post.author.displayName}}</span>
 										</a>
 									</div>
-									<ul class="post-categories ml-auto">
-										<li><a href="categories/cat">cat</a></li>
-									</ul>
+									<ul *ngIf="model.post.categories" class="post-categories ml-auto">
+											<li *ngFor="let tag of model.post.categories.split(',')">
+												<a href="?category={{tag}}"> {{tag}} </a>
+											</li>
+										</ul>
 								</div>
 
 							</header>
