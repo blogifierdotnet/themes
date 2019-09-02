@@ -1,0 +1,8 @@
+body {
+	background-color: #1A191F;
+	font-family: "Roboto",sans-serif;
+	font-size: 1rem;
+	cursor: default;
+	overflow-y: scroll;
+	color: #fff;
+}

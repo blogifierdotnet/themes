@@ -1,7 +1,4 @@
-<p>Search posts</p>
-<div class="input-group mb-3">
-	<input type="text" class="form-control" [(ngModel)]="term" (keyup.enter)="search()" placeholder="Search">
-	<div class="input-group-append">
-		<button (click)="search()" class="btn btn-secondary" type="submit">Go</button>
-	</div>
-</div>
+<form class="blog-search-form my-auto" role="search">
+	<input type="search" id="term" name="term" [(ngModel)]="term" (keyup.enter)="search()" class="form-control" placeholder="Search..." autocomplete="off">
+	<button (click)="search()" type="submit"><i class="fa fa-search"></i></button>
+</form>

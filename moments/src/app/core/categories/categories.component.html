@@ -1,5 +1,10 @@
-<ul *ngIf="categories">
-	<a *ngFor="let cat of categories | slice:0:10; let i=index" 
-	href="?category={{cat.category}}" 
-	class="list-group-item list-group-item-action">{{cat.category}} ({{cat.postCount}})</a>
-</ul>
+<div *ngIf="categories" class="widget widget-categories">
+	<h4 class="widget-title"><i class="widget-icon fa fa-folder"></i> <span>Categories</span></h4>
+	<div class="widget-body">
+		<ul>
+			<li *ngFor="let cat of categories | slice:0:10; let i=index">
+				<a href="?category={{cat.category}}">{{cat.category}} <span>({{cat.postCount}})</span></a>
+			</li>
+		</ul>
+	</div>
+</div>

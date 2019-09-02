@@ -1,19 +1,63 @@
-<div *ngIf="settings" class="container-fluid">
-	<div class="jumbotron">
-		<a href="/">
-			<h1>{{settings.title}}</h1>
-		</a>
-		<p>{{settings.description}}</p>
+<header *ngIf="settings" class="blog-header">
+	<div class="container d-flex">
+		<a href="/" class="blog-logo"> <img src="assets/img/logo.png" alt="{{settings.title}}" /></a>
+		<nav class="navbar navbar-expand-lg navbar-dark ml-auto">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="admin">Admin</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<app-search></app-search>
 	</div>
+</header>
 
-	<router-outlet></router-outlet>
-	<hr>
+<router-outlet></router-outlet>
 
-	<footer>
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<p>Copyright &copy; {{dt | date: 'yyyy'}} {{settings.title}}</p>
+<footer *ngIf="settings" class="blog-footer">
+	<div class="container">
+		<div class="blog-footer-wrap">
+			<div class="row">
+
+				<div class="col-sm-4">
+					<a href="/" class="blog-logo"><img src="assets/img/logo.png" width="200" alt="{{settings.title}}" /></a>
+					<p class="my-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+						been the industry's standard dummy.</p>
+					<p class="blog-copyright">Copyright © {{dt | date: 'yyyy'}}. Powered by <a
+							href="https://github.com/blogifierdotnet/Blogifier" data-toggle="tooltip" target="_blank"
+							title="{{settings.title}}">{{settings.title}}</a>. Designed by <a href="https://francis.bio/"
+							target="_blank" rel="nofollow">Francis</a>.</p>
+				</div>
+				<div class="col-sm-4">
+					<div class="widget widget-newsletter">
+						<h4 class="widget-title"><i class="widget-icon fa fa-telegram"></i><span>Newsletter</span></h4>
+						<div class="widget-body">
+							<ul>
+								<app-newsletter></app-newsletter>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="widget widget-social">
+						<h4 class="widget-title"><i class="widget-icon fa fa-share-alt"></i><span>Follow Us</span></h4>
+						<div class="widget-body">
+							<app-socialbuttons></app-socialbuttons>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
-	</footer>
-</div>
+	</div>
+</footer>

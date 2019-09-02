@@ -13,16 +13,16 @@
 								<div class="d-flex mb-5">
 									<div class="post-meta">
 										<a href="?author={{model.post.author.appUserName}}">
-												<img class="post-meta-img" src="{{root}}/{{model.post.author.avatar}}"
+											<img class="post-meta-img" src="{{root}}/{{model.post.author.avatar}}"
 												alt="{{model.post.author.displayName}}" />
 											<span class="post-meta-author">{{model.post.author.displayName}}</span>
 										</a>
 									</div>
 									<ul *ngIf="model.post.categories" class="post-categories ml-auto">
-											<li *ngFor="let tag of model.post.categories.split(',')">
-												<a href="?category={{tag}}"> {{tag}} </a>
-											</li>
-										</ul>
+										<li *ngFor="let tag of model.post.categories.split(',')">
+											<a href="?category={{tag}}"> {{tag}} </a>
+										</li>
+									</ul>
 								</div>
 
 							</header>
