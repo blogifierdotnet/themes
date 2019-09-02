@@ -1,6 +1,6 @@
 <ul *ngIf="posts" class="widget-posts-list">
 	<li *ngFor="let rp of posts | slice:0:10; let i=index" class="widget-posts-item">
-		<a href="/posts/demo-post" class="widget-posts-link">
+		<a href="posts/{{rp.slug}}" class="widget-posts-link">
 			<h5 class="widget-posts-title">{{rp.title}}</h5>
 			<span class="widget-posts-date">{{rp.published | date :'longDate'}}</span>
 			<img class="widget-posts-img" src="{{root}}/{{rp.cover}}" alt="{{rp.title}}">

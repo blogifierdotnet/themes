@@ -37,7 +37,7 @@
 
 				</div>
 				<!-- pagination -->
-				<ul class="pagination justify-content-between">
+				<ul *ngIf="model.pager.showOlder || model.pager.showNewer" class="pagination justify-content-between">
 					<li *ngIf="model && model.pager.showOlder" class="item item-prev">
 						<a class="item-link" href="?page={{model.pager.older}}">
 							Previous Page
