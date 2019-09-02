@@ -1,0 +1,8 @@
+<div *ngIf="model">
+	<div *ngFor="let post of model.posts">
+		<a href="posts/{{post.slug}}">
+			<h2 class="post-title">{{post.title}}</h2>
+		</a>
+		<hr>
+	</div>
+</div>
