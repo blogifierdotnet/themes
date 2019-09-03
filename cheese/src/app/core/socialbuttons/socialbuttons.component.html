@@ -1,0 +1,10 @@
+<div *ngIf="socialButtons" class="widget-body">
+	<h4 class="widget-title"><i class="widget-icon fa fa-share-alt"></i><span>Follow Us</span></h4>
+	<div class="row">
+		<div *ngFor="let btn of socialButtons" class="col-sm-6">
+			<a class="{{btn.class}}" target="_blank" href="{{btn.link}}">
+				<i class="fa {{btn.icon}}"></i> <span>{{btn.name}}</span>
+			</a>
+		</div>
+	</div>
+</div>

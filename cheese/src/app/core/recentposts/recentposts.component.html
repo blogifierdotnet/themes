@@ -1,0 +1,4 @@
+<ul *ngIf="posts" class="widget-posts-list">
+	<a *ngFor="let rp of posts | slice:0:10; let i=index" href="posts/{{rp.slug}}"
+		class="list-group-item list-group-item-action">{{rp.title}}</a>
+</ul>

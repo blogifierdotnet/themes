@@ -1,0 +1,44 @@
+<div *ngIf="model" class="container">
+	<div class="page-content">
+		<article class="post-single">
+
+			<div class=" post-body">
+				<div class="post-cover-wrap">
+					<img src="{{root}}/{{model.post.cover}}" alt="{{model.post.title}}" class="post-cover" />
+					<header class="post-header">
+						<time class="post-meta-time">{{model.post.published | date :'longDate'}}</time>
+						<h2 class="post-title">{{model.post.title}}</h2>
+						<div class="d-flex mb-5">
+							<div class="post-meta">
+								<a href="?author={{model.post.author.appUserName}}">
+									<img class="post-meta-img" src="{{root}}/{{model.post.author.avatar}}"
+										alt="{{model.post.author.displayName}}" />
+									<span class="post-meta-author">{{model.post.author.displayName}}</span>
+								</a>
+							</div>
+							<ul *ngIf="model.post.categories" class="post-categories ml-auto">
+								<li *ngFor="let tag of model.post.categories.split(',')"><a href="?category={{tag}}">{{tag}}</a></li>
+							</ul>
+						</div>
+					</header>
+				</div>
+
+				<div [innerHTML]="model.post.content" class="post-content"></div>
+
+				<ul *ngIf="model.older || model.newer" class="pagination justify-content-center">
+					<li *ngIf="model.older" class="item item-prev">
+						<a class="item-link" href="posts/{{model.older.slug}}" title="{{model.older.title}}">
+							<i class="fa fa-chevron-left"></i> Previous Post
+						</a>
+					</li>
+					<li *ngIf="model.newer" class="item item-next">
+						<a class="item-link" href="posts/{{model.newer.slug}}" title="{{model.newer.title}}">
+							Next Post <i class="fa fa-chevron-right"></i>
+						</a>
+					</li>
+				</ul>
+
+			</div>
+		</article>
+	</div>
+</div>
