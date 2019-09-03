@@ -1,0 +1,5 @@
+<ul *ngIf="categories">
+	<a *ngFor="let cat of categories | slice:0:10; let i=index" 
+	href="?category={{cat.category}}" 
+	class="list-group-item list-group-item-action">{{cat.category}} ({{cat.postCount}})</a>
+</ul>

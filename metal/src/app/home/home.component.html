@@ -1,0 +1,45 @@
+<div *ngIf="model" class="page-content">
+	<div class="container">
+
+		<div class="row">
+
+			<div *ngFor="let post of model.posts" class="col-md-6 mb-5">
+				<article class="post post-home">
+					<div class="post-cover">
+						<a href="posts/{{post.slug}}">
+							<img src="{{root}}/{{post.cover}}" alt="{{post.title}}">
+						</a>
+						<span *ngIf="post.featured" class="post-featrued-label"><i class="fa fa-star"></i> Featured</span>
+					</div>
+					<div class="post-body">
+						<ul *ngIf="post.categories" class="post-categories">
+							<li *ngFor="let tag of post.categories.split(',')"><a href="?category={{tag}}">{{tag}}</a></li>
+						</ul>
+						<h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
+						<div class="post-meta">
+							By <a class="post-meta-author" href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a>
+							On
+							<time class="post-meta-time">{{post.published | date :'longDate'}}</time>
+						</div>
+						<a class="post-more" href="posts/{{post.slug}}">Continue Reading</a>
+					</div>
+				</article>
+			</div>
+
+		</div>
+
+		<ul *ngIf="model.pager.showOlder || model.pager.showNewer" class="pagination justify-content-between">
+			<li *ngIf="model.pager.showOlder" class="item item-prev">
+				<a class="item-link" href="?page={{model.pager.older}}">
+					Previous Page
+				</a>
+			</li>
+			<li *ngIf="model.pager.showNewer" class="item item-next">
+				<a class="item-link" href="?page={{model.pager.newer}}">
+					Next Page
+				</a>
+			</li>
+		</ul>
+
+	</div>
+</div>
