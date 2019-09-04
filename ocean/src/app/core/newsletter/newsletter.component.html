@@ -1,0 +1,14 @@
+<div class="widget widget-newsletter">
+	<h4 class="widget-title"><span>Newsletter</span></h4>
+	<div class="widget-body">
+		<ul>
+			<p style="font-size: 1.0em">Subscribe to our newsletter to get latest posts delivered directly to your inbox.</p>
+			<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-group">
+				<div id="newsletter-form">
+					<input type="email" name="txtEmail" ngModel [email]="true" placeholder="someone@example.com">
+					<button type="submit">Subscribe</button>
+				</div>
+			</form>
+		</ul>
+	</div>
+</div>
