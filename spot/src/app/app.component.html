@@ -1,0 +1,19 @@
+<div *ngIf="settings" class="container-fluid">
+	<div class="jumbotron">
+		<a href="/">
+			<h1>{{settings.title}}</h1>
+		</a>
+		<p>{{settings.description}}</p>
+	</div>
+
+	<router-outlet></router-outlet>
+	<hr>
+
+	<footer>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<p>Copyright &copy; {{dt | date: 'yyyy'}} {{settings.title}}</p>
+			</div>
+		</div>
+	</footer>
+</div>
