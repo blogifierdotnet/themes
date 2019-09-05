@@ -1,16 +1,14 @@
-<p>
-	Join our subscribers list to get the latest updates directly in your inbox.
-</p>
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="register-form">
-	<div class="input-group form-group-no-border">
-		<div class="input-group-prepend">
-			<span class="input-group-text">
-				<i class="fa fa-envelope"></i>
-			</span>
-		</div>
-		<input type="email" name="txtEmail" ngModel [email]="true" class="form-control" placeholder="Email" />
-		<div class="input-group-append btn-newsletter">
-			<button class="btn btn-secondary" type="submit">Subscribe</button>
-		</div>
+<div class="widget widget-newsletter">
+	<h4 class="widget-title"><span>Newsletter</span></h4>
+	<div class="widget-body">
+		<ul>
+			<p style="font-size: 1.0em">Subscribe to our newsletter to get latest posts delivered directly to your inbox.</p>
+			<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-group">
+				<div id="newsletter-form">
+					<input type="email" name="txtEmail" ngModel [email]="true" placeholder="someone@example.com">
+					<button type="submit">Subscribe</button>
+				</div>
+			</form>
+		</ul>
 	</div>
-</form>
+</div>

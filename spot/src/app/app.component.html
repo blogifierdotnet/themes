@@ -1,19 +1,43 @@
-<div *ngIf="settings" class="container-fluid">
-	<div class="jumbotron">
-		<a href="/">
-			<h1>{{settings.title}}</h1>
-		</a>
-		<p>{{settings.description}}</p>
-	</div>
-
-	<router-outlet></router-outlet>
-	<hr>
-
-	<footer>
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<p>Copyright &copy; {{dt | date: 'yyyy'}} {{settings.title}}</p>
-			</div>
+<header *ngIf="settings" class="blog-header">
+	<div class="blog-nav">
+		<div class="container d-flex">
+			<nav class="navbar navbar-expand-lg navbar-dark mr-auto">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="admin">Admin</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<app-search></app-search>
 		</div>
-	</footer>
-</div>
+	</div>
+	<a href="/" class="blog-logo d-block"> <img src="assets/img/logo.png" alt="{{settings.title}}" /></a>
+</header>
+
+<router-outlet></router-outlet>
+
+<footer *ngIf="settings" class="blog-footer">
+	<div class="container">
+		<div class="blog-copyright">
+			<a href="~/" class="blog-logo d-block"> <img src="assets/img/logo-white.png" alt="{{settings.title}}" /></a>
+
+			<p class="">Copyright © {{dt | date: 'yyyy'}}. Powered by <a href="https://github.com/blogifierdotnet/Blogifier"
+					data-toggle="tooltip" target="_blank" title="Blogifier">Blogifier</a>. Designed by <a
+					href="https://francis.bio/" target="_blank" rel="nofollow">Francis</a>.</p>
+		</div>
+		<ul class=" list-unstyled">
+			<li>
+				<a href="admin"><i class="fa fa-user"></i></a>
+			</li>
+		</ul>
+	</div>
+</footer>
