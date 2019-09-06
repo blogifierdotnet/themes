@@ -1,0 +1,74 @@
+<div *ngIf="model" class="page-content">
+	<div class="">
+
+		<div id="carouselExampleIndicators" class="blog-carousel carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<ng-template ngFor let-item [ngForOf]="model.posts" let-i="index">
+					<div *ngIf="i==0" class="carousel-item active">
+						<img src="{{root}}/{{item.cover}}" class="d-block w-100" alt="{{item.title}}">
+						<div class="carousel-caption d-none d-md-block">
+							<h2>{{item.title}}</h2>
+							<p>By {{item.author.displayName}} On {{item.published | date :'longDate'}}</p>
+							<a class="btn btn-dark" href="posts/{{item.slug}}">read more...</a>
+						</div>
+					</div>
+					<div *ngIf="i>0 && i<3" class="carousel-item">
+						<img src="{{root}}/{{item.cover}}" class="d-block w-100" alt="{{item.title}}">
+						<div class="carousel-caption d-none d-md-block">
+							<h2>{{item.title}}</h2>
+							<p>By {{item.author.displayName}} On {{item.published | date :'longDate'}}</p>
+							<a class="btn btn-dark" href="posts/{{item.slug}}">read more...</a>
+						</div>
+					</div>
+				</ng-template>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
+		<div class="row no-gutters">
+			<div *ngFor="let post of model.posts" class="col-sm-6 col-md-4">
+				<article class="post">
+					<a class="post-cover-link" href="posts/{{post.slug}}"></a>
+					<div class="post-cover">
+						<img src="{{root}}/{{post.cover}}" alt="{{post.title}}">
+					</div>
+					<div class="post-body">
+						<ul *ngIf="post.categories" class="post-categories clearfix">
+							<li *ngFor="let tag of post.categories.split(',')"><a href="?category={{tag}}"> {{tag}} </a></li>
+						</ul>
+						<h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
+						<div class="post-meta">
+							By <a class="post-meta-author" href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a>
+							On <time class="post-meta-time">{{post.published | date :'longDate'}}</time>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+
+		<ul *ngIf="model.pager.showOlder || model.pager.showNewer" class="pagination justify-content-center">
+			<li *ngIf="model.pager.showOlder" class="item item-prev">
+				<a class="item-link" href="?page={{model.pager.older}}">
+					<i class="fa fa-chevron-left mr-3"></i> Previous Page
+				</a>
+			</li>
+			<li *ngIf="model.pager.showNewer" class="item item-next">
+				<a class="item-link" href="?page={{model.pager.newer}}">
+					Next Page <i class="fa fa-chevron-right ml-3"></i>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

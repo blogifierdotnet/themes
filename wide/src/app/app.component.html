@@ -1,0 +1,29 @@
+<header *ngIf="settings" class="blog-header">
+	<div class=" d-flex">
+		<a href="/" class="blog-logo"> <img src="assets/img/logo.png" alt="{{settings.title}}" /></a>
+		<nav class="navbar navbar-expand-lg navbar-dark ml-auto">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link" href="admin">Admin</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<app-search></app-search>
+	</div>
+</header>
+
+<router-outlet></router-outlet>
+
+<footer *ngIf="settings" class="blog-footer">
+	<div class="container">
+			<p class="blog-copyright text-center">Copyright © {{dt | date: 'yyyy'}}. Powered by <a href="https://github.com/blogifierdotnet/Blogifier" data-toggle="tooltip" target="_blank" title="Blogifier">Blogifier</a>. Designed by <a href="https://francis.bio/" target="_blank" rel="nofollow">Francis</a>.</p>
+	</div>
+</footer>
