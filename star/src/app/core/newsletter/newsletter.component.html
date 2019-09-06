@@ -1,0 +1,7 @@
+<p>Subscribe to our newsletter to get latest posts delivered directly to your inbox.</p>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-group">
+	<div id="newsletter-form">
+		<input name="txtEmail" ngModel [email]="true" type="email" placeholder="someone@example.com">
+		<button type="submit">Subscribe</button>
+	</div>
+</form>

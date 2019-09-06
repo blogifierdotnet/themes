@@ -1,0 +1,35 @@
+<div *ngIf="model" class="page-content">
+
+	<article class="post-single">
+		<div class="post-cover">
+			<img class="post-cover-img" src="{{root}}/{{model.post.cover}}" alt="{{model.post.title}}">
+			<header class="post-header container">
+				<time class="post-time">{{model.post.published | date :'longDate'}}</time>
+				<span *ngIf="model.post.categories" class="post-category">
+					<a *ngFor="let tag of model.post.categories.split(',')" href="?category={{tag}}">{{tag}}</a>
+				</span>
+				<h2 class="post-title">{{model.post.title}}</h2>
+				<a class="post-author" href="?author={{model.post.author.appUserName}}">
+					<img class="post-author-avatar" src="{{root}}/{{model.post.author.avatar}}" alt="{{model.post.author.displayName}}" />
+					<span class="post-author-name">{{model.post.author.displayName}}</span>
+				</a>
+			</header>
+		</div>
+		<div class="container">
+			<div [innerHTML]="model.post.content" class="post-content"></div>
+		</div>
+	</article>
+
+	<ul *ngIf="model.older || model.newer" class="pagination justify-content-center">
+		<li *ngIf="model.older" class="item item-prev">
+			<a class="item-link" href="posts/{{model.older.slug}}" title="{{model.older.title}}">
+				<i class="fa fa-chevron-left"></i>
+			</a>
+		</li>
+		<li *ngIf="model.newer" class="item item-next">
+			<a class="item-link" href="posts/{{model.newer.slug}}" title="{{model.newer.title}}">
+				<i class="fa fa-chevron-right"></i>
+			</a>
+		</li>
+	</ul>
+</div>

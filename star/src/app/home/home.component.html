@@ -1,0 +1,56 @@
+<div *ngIf="model" class="page-content">
+
+	<div class="blog-cover" *ngIf="blogCover" [ngStyle]="{'background-image':'url('+blogCover+')'}">
+		<div class="blog-cover-wrap">
+			<div class="blog-cover-content">
+				<h1>Hello,<br /> My Name is Jane!</h1>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+					industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+					scrambled it to make a type specimen book.</p>
+			</div>
+		</div>
+	</div>
+
+	<article *ngFor="let post of model.posts" class="post">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-2">
+					<time class="post-meta-time">{{post.published | date :'longDate'}}</time>
+				</div>
+				<div class="col-sm-10">
+
+					<header class="post-header">
+						<div *ngIf="post.categories" class="post-meta-category">
+							<a *ngFor="let tag of post.categories.split(',')" href="?category={{tag}}"> {{tag}} </a>
+						</div>
+						<h2 class="post-title"><a href="posts/{{post.slug}}">{{post.title}}</a></h2>
+						<span *ngIf="post.featured" class="post-featrued-label" title="Featured" data-toggle="tooltip"><i class="fa fa-star"></i></span>
+						<div class="post-meta">
+							<a class="post-meta-author" href="?author={{post.author.appUserName}}">
+								<img class="post-meta-author-avatar" src="{{root}}/{{post.author.avatar}}" alt="Author: {{post.author.displayName}}" />
+								<span class="post-meta-author-name">{{post.author.displayName}}</span>
+							</a>
+						</div>
+					</header>
+					<div [innerHTML]="post.description" class="post-description"></div>
+					<a href="posts/{{post.slug}}" class="post-more">Read More</a>
+				</div>
+
+			</div>
+		</div>
+	</article>
+
+	<ul *ngIf="model.pager.showOlder || model.pager.showNewer" class="pagination justify-content-center">
+		<li *ngIf="model.pager.showOlder" class="item item-prev">
+			<a class="item-link" href="?page={{model.pager.older}}">
+				<i class="fa fa-chevron-left"></i>
+			</a>
+		</li>
+		<li *ngIf="model.pager.showNewer" class="item item-next">
+			<a class="item-link" href="?page={{model.pager.newer}}">
+				<i class="fa fa-chevron-right"></i>
+			</a>
+		</li>
+	</ul>
+</div>

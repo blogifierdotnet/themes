@@ -1,0 +1,7 @@
+<ul *ngIf="socialButtons">
+	<li *ngFor="let btn of socialButtons">
+		<a class="{{btn.class}}" target="_blank" href="{{btn.link}}">
+			<i class="fa {{btn.icon}}"></i>
+		</a>
+	</li>
+</ul>
