@@ -13,6 +13,9 @@ This project contains source code for [Blogifier](https://github.com/blogifierdo
 4. To run application (theme) in the browser, execute `ng serve -o` command.
 5. To build theme for deployment, execute `ng build --prod`. This will build and copy theme to `../_dist` folder one level up.
 
+## Short Video
+[![Jumpstart on Blogifier Theme Development](https://img.youtube.com/vi/ZrMOdPOegFU/0.jpg)](https://www.youtube.com/watch?v=ZrMOdPOegFU)
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
