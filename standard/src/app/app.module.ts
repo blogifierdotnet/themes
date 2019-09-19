@@ -9,13 +9,27 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { ContactComponent } from './core/contact/contact.component';
+import { NewsletterComponent } from './core/newsletter/newsletter.component';
+import { CategoriesComponent } from './core/categories/categories.component';
+import { RecentpostsComponent } from './core/recentposts/recentposts.component';
+import { SearchComponent } from './core/search/search.component';
+import { SocialbuttonsComponent } from './core/socialbuttons/socialbuttons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PostsComponent,
-    FooterComponent
+    FooterComponent,
+		NotfoundComponent,
+		ContactComponent,
+		NewsletterComponent,
+		CategoriesComponent,
+		RecentpostsComponent,
+		SearchComponent,
+		SocialbuttonsComponent
   ],
   imports: [
     BrowserModule,

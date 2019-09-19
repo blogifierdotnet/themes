@@ -1,0 +1,19 @@
+<h4 class="contact-title">Contact us</h4>
+<form (ngSubmit)="onSubmit()" class="form-horizontal">
+	<div class="form-group">
+		<input id="name" name="name" [(ngModel)]="contact.name" #name="ngModel" required type="text" placeholder="Your Name" class="form-control">
+		<div *ngIf="(name.dirty || name.touched) && name.errors && name.errors.required" class="text-danger">Name is required.</div>
+	</div>
+	<div class="form-group">
+		<input id="email" name="email" [(ngModel)]="contact.email" #email="ngModel" required email type="text" placeholder="Email Address" class="form-control">
+		<div *ngIf="(email.dirty || email.touched) && email.errors && email.errors.required" class="text-danger">Email is required.</div>
+		<div *ngIf="(email.dirty || email.touched) && email.errors && email.errors.email" class="text-danger">Must be valid email.</div>
+	</div>
+	<div class="form-group">
+		<textarea id="content" name="content" [(ngModel)]="contact.content" #content="ngModel" required class="form-control" placeholder="Enter your massage here." rows="7"></textarea>
+		<div *ngIf="(content.dirty || content.touched) && content.errors && content.errors.required" class="text-danger">Message is required.</div>
+	</div>
+	<div class="form-group">
+		<button [disabled]="email.errors || name.errors || content.errors" type="submit" class="btn btn-secondary btn-lg">Submit</button>
+	</div>
+</form>

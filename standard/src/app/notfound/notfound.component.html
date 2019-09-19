@@ -1,0 +1,17 @@
+<ng-template [ngIf]="settings">
+	<div class="page-cover" [ngStyle]="{'background-image':'url(' + root + '/' + settings.cover + ')'}">
+		<h1 class="page-cover-title">
+			<a href="/">{{settings.title}}</a>
+		</h1>
+		<p class="page-cover-desc">{{settings.description}}</p>
+	</div>
+	<div class="page-content">
+		<div class="container">
+			<div class="jumbotron">
+				<h1>404 - not found</h1>
+			</div>
+			<p>Sorry, we can't find the page you were looking for</p>
+		</div>
+	</div>
+	<app-footer></app-footer>
+</ng-template>
