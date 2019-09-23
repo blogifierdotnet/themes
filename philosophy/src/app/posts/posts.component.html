@@ -1,0 +1,106 @@
+<div *ngIf="model" class="s-pageheader">
+
+	<app-header></app-header>
+
+</div> <!-- end s-pageheader -->
+
+
+<!-- s-content
+	================================================== -->
+<section *ngIf="model" class="s-content s-content--narrow s-content--no-padding-bottom">
+
+	<article class="row format-standard">
+
+		<div class="s-content__header col-full">
+			<h1 class="s-content__header-title">
+				{{model.post.title}}
+			</h1>
+			<ul class="s-content__header-meta">
+				<li class="date">December 16, 2017</li>
+				<li class="cat">
+					In
+					<a href="#0">Lifestyle</a>
+					<a href="#0">Travel</a>
+				</li>
+			</ul>
+		</div> <!-- end s-content__header -->
+
+		<div class="s-content__media col-full">
+			<div class="s-content__post-thumb">
+				<img src="{{root}}/{{model.post.cover}}" alt="{{model.post.title}}">
+			</div>
+		</div> <!-- end s-content__media -->
+
+		<div class="col-full s-content__main">
+
+			<div [innerHTML]="model.post.content"></div>
+
+			<p class="s-content__tags">
+				<span>Post Tags</span>
+
+				<span class="s-content__tag-list">
+					<a href="#0">orci</a>
+					<a href="#0">lectus</a>
+					<a href="#0">varius</a>
+					<a href="#0">turpis</a>
+				</span>
+			</p> <!-- end s-content__tags -->
+
+			<div class="s-content__author">
+				<img src="assets/images/avatars/user-03.jpg" alt="">
+				<div class="s-content__author-about">
+					<h4 class="s-content__author-name">
+						<a href="#0">Jonathan Doe</a>
+					</h4>
+					<p>Alias aperiam at debitis deserunt dignissimos dolorem doloribus, fuga fugiat impedit laudantium magni
+						maxime nihil nisi quidem quisquam sed ullam voluptas voluptatum. Lorem ipsum dolor sit amet, consectetur
+						adipisicing elit.
+					</p>
+					<ul class="s-content__author-social">
+						<li><a href="#0">Facebook</a></li>
+						<li><a href="#0">Twitter</a></li>
+						<li><a href="#0">GooglePlus</a></li>
+						<li><a href="#0">Instagram</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="s-content__pagenav">
+				<div class="s-content__nav">
+					<div class="s-content__prev">
+						<a href="#0" rel="prev">
+							<span>Previous Post</span>
+							Tips on Minimalist Design
+						</a>
+					</div>
+					<div class="s-content__next">
+						<a href="#0" rel="next">
+							<span>Next Post</span>
+							Less Is More
+						</a>
+					</div>
+				</div>
+			</div> <!-- end s-content__pagenav -->
+
+		</div> <!-- end s-content__main -->
+
+	</article>
+
+
+	<!-- comments
+			================================================== -->
+	<div class="comments-wrap">
+
+		<div id="comments" class="row">
+			<div class="col-full">
+
+				<h3 class="h2">5 Comments</h3>
+
+			</div> <!-- end col-full -->
+
+		</div> <!-- end row comments -->
+	</div> <!-- end comments-wrap -->
+
+</section> <!-- s-content -->
+
+<app-footer></app-footer>

@@ -1,0 +1,64 @@
+<div class="pageheader-content row">
+	<div class="col-full">
+		<div class="featured">
+
+			<div *ngIf="f1" class="featured__column featured__column--big">
+				<div class="entry" [ngStyle]="{'background-image':'url('+root+'/'+f1.cover+')'}">
+					<div class="entry__content">
+						<ng-template *ngIf="f1.categories" ngFor let-item [ngForOf]="f1.categories.split(',')">
+							<span class="entry__category"><a href="?category={{item}}">{{item}}</a></span>
+						</ng-template>
+						<h1><a href="posts/{{f1.slug}}" title="">{{f1.title}}</a></h1>
+						<div class="entry__info">
+							<a href="?author={{f1.author.appUserName}}" class="entry__profile-pic">
+								<img class="avatar" src="{{root}}/{{f1.author.avatar}}" alt="">
+							</a>
+							<ul class="entry__meta">
+								<li><a href="?author={{f1.author.appUserName}}">{{f1.author.displayName}}</a></li>
+								<li>{{f1.published | date :'longDate'}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div *ngIf="f2 || f3" class="featured__column featured__column--small">
+				<div *ngIf="f2" class="entry" [ngStyle]="{'background-image':'url('+root+'/'+f2.cover+')'}">
+					<div class="entry__content">
+						<ng-template *ngIf="f2.categories" ngFor let-item [ngForOf]="f2.categories.split(',')">
+							<span class="entry__category"><a href="?category={{item}}">{{item}}</a></span>
+						</ng-template>
+						<h1><a href="posts/{{f2.slug}}" title="">{{f2.title}}</a></h1>
+						<div class="entry__info">
+							<a href="posts/{{f2.slug}}" class="entry__profile-pic">
+								<img class="avatar" src="assets/images/avatars/user-03.jpg" alt="">
+							</a>
+							<ul class="entry__meta">
+								<li><a href="?author={{f2.author.appUserName}}">{{f2.author.displayName}}</a></li>
+								<li>{{f2.published | date :'longDate'}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="f3" class="entry" [ngStyle]="{'background-image':'url('+root+'/'+f3.cover+')'}">
+					<div class="entry__content">
+						<ng-template *ngIf="f3.categories" ngFor let-item [ngForOf]="f3.categories.split(',')">
+							<span class="entry__category"><a href="?category={{item}}">{{item}}</a></span>
+						</ng-template>
+						<h1><a href="posts/{{f3.slug}}" title="">{{f3.title}}</a></h1>
+						<div class="entry__info">
+							<a href="posts/{{f2.slug}}" class="entry__profile-pic">
+								<img class="avatar" src="assets/images/avatars/user-03.jpg" alt="">
+							</a>
+							<ul class="entry__meta">
+								<li><a href="?author={{f3.author.appUserName}}">{{f3.author.displayName}}</a></li>
+								<li>{{f3.published | date :'longDate'}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

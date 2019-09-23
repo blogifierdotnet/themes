@@ -1,0 +1,5 @@
+<ul *ngIf="socialButtons" class="header__social">
+	<li *ngFor="let btn of socialButtons">
+		<a href="{{btn.link}}" target="new"><i class="fa {{btn.icon}}" aria-hidden="true"></i></a>
+	</li>
+</ul>

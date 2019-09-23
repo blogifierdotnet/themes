@@ -1,0 +1,39 @@
+<header *ngIf="settings" class="header">
+	<div class="header__content row">
+
+		<div class="header__logo">
+			<a class="logo" href="/">
+				<img src="{{root}}/{{settings.logo}}" alt="Homepage">
+				<!-- <img src="assets/images/logo.svg" alt="Homepage"> -->
+			</a>
+		</div>
+
+		<app-socialbuttons></app-socialbuttons>
+
+		<a class="header__search-trigger" (click)="onSearch($event)" href="#0"></a>
+
+		<div class="header__search">
+			<form (submit)="onSubmit()" role="search" method="get" class="header__search-form" action="#">
+				<label>
+					<span class="hide-content">Search for:</span>
+					<input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:"
+						autocomplete="off">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form>
+			<a href="#0" (click)="closeSearch()" title="Close Search" class="header__overlay-close">Close</a>
+		</div>
+
+		<a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+
+		<nav class="header__nav-wrap">
+			<h2 class="header__nav-heading h6">Site Navigation</h2>
+			<ul class="header__nav">
+				<li class="current"><a href="/" title="">Home</a></li>
+				<li><a href="admin" title="">Admin</a></li>
+			</ul>
+			<a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+		</nav>
+
+	</div>
+</header>
