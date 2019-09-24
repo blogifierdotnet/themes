@@ -1,12 +1,7 @@
 <div *ngIf="model" class="s-pageheader">
-
 	<app-header></app-header>
+</div>
 
-</div> <!-- end s-pageheader -->
-
-
-<!-- s-content
-	================================================== -->
 <section *ngIf="model" class="s-content s-content--narrow s-content--no-padding-bottom">
 
 	<article class="row format-standard">
@@ -16,91 +11,78 @@
 				{{model.post.title}}
 			</h1>
 			<ul class="s-content__header-meta">
-				<li class="date">December 16, 2017</li>
-				<li class="cat">
+				<li class="date">{{model.post.published | date :'longDate'}}</li>
+				<li *ngIf="model.post.categories" class="cat">
 					In
-					<a href="#0">Lifestyle</a>
-					<a href="#0">Travel</a>
+					<a *ngFor="let tag of model.post.categories.split(',')" href="?category={{tag}}"> {{tag}} </a>
 				</li>
 			</ul>
-		</div> <!-- end s-content__header -->
+		</div>
 
 		<div class="s-content__media col-full">
 			<div class="s-content__post-thumb">
 				<img src="{{root}}/{{model.post.cover}}" alt="{{model.post.title}}">
 			</div>
-		</div> <!-- end s-content__media -->
+		</div>
 
 		<div class="col-full s-content__main">
 
 			<div [innerHTML]="model.post.content"></div>
 
-			<p class="s-content__tags">
+			<p *ngIf="model.post.categories" class="s-content__tags">
 				<span>Post Tags</span>
-
 				<span class="s-content__tag-list">
-					<a href="#0">orci</a>
-					<a href="#0">lectus</a>
-					<a href="#0">varius</a>
-					<a href="#0">turpis</a>
+					<a *ngFor="let tag of model.post.categories.split(',')" href="?category={{tag}}"> {{tag}} </a>
 				</span>
-			</p> <!-- end s-content__tags -->
+			</p>
 
 			<div class="s-content__author">
-				<img src="assets/images/avatars/user-03.jpg" alt="">
+				<img src="{{root}}/{{model.post.author.avatar}}" alt="">
 				<div class="s-content__author-about">
 					<h4 class="s-content__author-name">
-						<a href="#0">Jonathan Doe</a>
+						<a href="?author={{model.post.author.appUserName}}">{{model.post.author.displayName}}</a>
 					</h4>
-					<p>Alias aperiam at debitis deserunt dignissimos dolorem doloribus, fuga fugiat impedit laudantium magni
-						maxime nihil nisi quidem quisquam sed ullam voluptas voluptatum. Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit.
-					</p>
+					<p>{{model.post.author.bio}}</p>
+					<!--
 					<ul class="s-content__author-social">
 						<li><a href="#0">Facebook</a></li>
 						<li><a href="#0">Twitter</a></li>
 						<li><a href="#0">GooglePlus</a></li>
 						<li><a href="#0">Instagram</a></li>
 					</ul>
+					-->
 				</div>
 			</div>
 
-			<div class="s-content__pagenav">
+			<div *ngIf="model.older || model.newer" class="s-content__pagenav">
 				<div class="s-content__nav">
-					<div class="s-content__prev">
-						<a href="#0" rel="prev">
-							<span>Previous Post</span>
-							Tips on Minimalist Design
+					<div *ngIf="model.older" class="s-content__prev">
+						<a href="posts/{{model.older.slug}}" rel="prev">
+							<span>Older Post</span>
+							{{model.older.title}}
 						</a>
 					</div>
-					<div class="s-content__next">
-						<a href="#0" rel="next">
-							<span>Next Post</span>
-							Less Is More
+					<div *ngIf="model.newer" class="s-content__next">
+						<a href="posts/{{model.newer.slug}}" rel="next">
+							<span>Newer Post</span>
+							{{model.newer.title}}
 						</a>
 					</div>
 				</div>
-			</div> <!-- end s-content__pagenav -->
+			</div>
 
-		</div> <!-- end s-content__main -->
+		</div>
 
 	</article>
 
-
-	<!-- comments
-			================================================== -->
 	<div class="comments-wrap">
-
 		<div id="comments" class="row">
 			<div class="col-full">
-
 				<h3 class="h2">5 Comments</h3>
+			</div>
+		</div>
+	</div>
 
-			</div> <!-- end col-full -->
-
-		</div> <!-- end row comments -->
-	</div> <!-- end comments-wrap -->
-
-</section> <!-- s-content -->
+</section>
 
 <app-footer></app-footer>

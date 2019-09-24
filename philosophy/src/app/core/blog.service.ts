@@ -62,7 +62,7 @@ export class BlogService {
 	}
 
 	getFeatured(): Observable<IPostList> {
-		var postsUrl = environment.apiEndpoint + '/api/posts?include=FP&page=1';
+		var postsUrl = environment.apiEndpoint + '/api/posts?include=F&page=1';
 		return this.http.get<IPostList>(postsUrl).pipe(
 			tap(data => this.logMessage('Featured posts: ' + JSON.stringify(data))),
 			catchError(this.handleError)
