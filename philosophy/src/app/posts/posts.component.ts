@@ -13,7 +13,8 @@ export class PostsComponent implements OnInit {
   constructor(private blogService: BlogService, private route: ActivatedRoute) { }
 
 	model: IPostModel;
-	root: string;
+  root: string;
+  pageId: string;
 
   ngOnInit() {
 		var slug = this.route.snapshot.paramMap.get('slug');
@@ -21,6 +22,7 @@ export class PostsComponent implements OnInit {
     this.blogService.getPost(slug).subscribe(
       result => { 
         this.model = result;
+        this.pageId = 'posts/' + this.model.post.slug;
       }
     );
   }
