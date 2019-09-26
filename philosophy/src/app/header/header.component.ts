@@ -37,7 +37,9 @@ export class HeaderComponent implements OnInit {
 		}, 100);
 	}
 
-	closeSearch() {
+	closeSearch(e) {
+		e.preventDefault();
+		e.stopPropagation();
 		const body = document.getElementsByTagName('body')[0];
 		body.classList.remove('search-is-visible');
 	}
@@ -46,7 +48,6 @@ export class HeaderComponent implements OnInit {
 		var txtField = <HTMLInputElement>document.getElementsByClassName('search-field')[0];
 		var term = txtField.value;
 		if (term && term.length > 0) {
-			this.closeSearch();
 			window.location.href = '?term=' + term;
 		}
 	}

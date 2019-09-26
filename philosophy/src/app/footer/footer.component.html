@@ -1,78 +1,25 @@
-<!-- s-extra
-================================================== -->
-<section class="s-extra">
-
+<section *ngIf="settings" class="s-extra">
 	<div class="row top">
 
-		<div class="col-eight md-six tab-full popular">
+		<div  class="col-eight md-six tab-full popular">
 			<h3>Popular Posts</h3>
 
-			<div class="block-1-2 block-m-full popular__posts">
-				<article class="col-block popular__post">
-					<a href="#0" class="popular__thumb">
-						<img src="assets/images/thumbs/small/wheel-150.jpg" alt="">
+			<div *ngIf="popular" class="block-1-2 block-m-full popular__posts">
+				<article *ngFor="let post of popular.posts" class="col-block popular__post">
+					<a href="posts/{{post.slug}}" class="popular__thumb">
+						<img src="{{root}}/{{post.cover}}" alt="">
 					</a>
-					<h5><a href="#0">Visiting Theme Parks Improves Your Health.</a></h5>
+					<h5><a href="posts/{{post.slug}}">{{post.title}}</a></h5>
 					<section class="popular__meta">
-						<span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-						<span class="popular__date"><span>on</span> <time datetime="2017-12-19">Dec 19, 2017</time></span>
+						<span class="popular__author"><span>By</span> <a href="?author={{post.author.appUserName}}"> {{post.author.displayName}} </a></span>
+						<span class="popular__date"><span> on </span> <time>{{post.published | date :'longDate'}}</time></span>
 					</section>
 				</article>
-				<article class="col-block popular__post">
-					<a href="#0" class="popular__thumb">
-						<img src="assets/images/thumbs/small/shutterbug-150.jpg" alt="">
-					</a>
-					<h5><a href="#0">Key Benefits Of Family Photography.</a></h5>
-					<section class="popular__meta">
-						<span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-						<span class="popular__date"><span>on</span> <time datetime="2017-12-18">Dec 18, 2017</time></span>
-					</section>
-				</article>
-				<article class="col-block popular__post">
-					<a href="#0" class="popular__thumb">
-						<img src="assets/images/thumbs/small/cookies-150.jpg" alt="">
-					</a>
-					<h5><a href="#0">Absolutely No Sugar Oatmeal Cookies.</a></h5>
-					<section class="popular__meta">
-						<span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-						<span class="popular__date"><span>on</span> <time datetime="2017-12-16">Dec 16, 2017</time></span>
-					</section>
-				</article>
-				<article class="col-block popular__post">
-					<a href="#0" class="popular__thumb">
-						<img src="assets/images/thumbs/small/beetle-150.jpg" alt="">
-					</a>
-					<h5><a href="#0">Throwback To The Good Old Days.</a></h5>
-					<section class="popular__meta">
-						<span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-						<span class="popular__date"><span>on</span> <time datetime="2017-12-16">Dec 16, 2017</time></span>
-					</section>
-				</article>
-				<article class="col-block popular__post">
-					<a href="#0" class="popular__thumb">
-						<img src="assets/images/thumbs/small/tulips-150.jpg" alt="">
-					</a>
-					<h5><a href="#0">10 Interesting Facts About Caffeine.</a></h5>
-					<section class="popular__meta">
-						<span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-						<span class="popular__date"><span>on</span> <time datetime="2017-12-14">Dec 14, 2017</time></span>
-					</section>
-				</article>
-				<article class="col-block popular__post">
-					<a href="#0" class="popular__thumb">
-						<img src="assets/images/thumbs/small/salad-150.jpg" alt="">
-					</a>
-					<h5><a href="#0">Healthy Mediterranean Salad Recipes</a></h5>
-					<section class="popular__meta">
-						<span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-						<span class="popular__date"><span>on</span> <time datetime="2017-12-12">Dec 12, 2017</time></span>
-					</section>
-				</article>
-			</div> <!-- end popular_posts -->
-		</div> <!-- end popular -->
+			</div>
+		</div>
 
 		<div class="col-four md-six tab-full about">
-			<h3>About Philosophy</h3>
+			<h3>About {{settings.title}}</h3>
 
 			<p>
 				Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id
@@ -95,18 +42,18 @@
 					<a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
 				</li>
 			</ul> <!-- end header__social -->
-		</div> <!-- end about -->
+		</div>
 
-	</div> <!-- end row -->
+	</div>
 
 	<div class="row bottom tags-wrap">
 		<div class="col-full tags">
 			<h3>Tags</h3>
 			<div *ngIf="categories" class="tagcloud">
 				<a *ngFor="let cat of categories" href="?category={{cat.category}}">{{cat.category}}</a>
-			</div> <!-- end tagcloud -->
-		</div> <!-- end tags -->
-	</div> <!-- end tags-wrap -->
+			</div>
+		</div>
+	</div>
 </section>
 
 <footer class="s-footer">
@@ -199,4 +146,4 @@
 		</div>
 	</div> <!-- end s-footer__bottom -->
 
-</footer> <!-- end s-footer -->
+</footer>

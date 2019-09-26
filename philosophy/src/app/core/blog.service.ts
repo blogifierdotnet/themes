@@ -69,6 +69,14 @@ export class BlogService {
 		);
 	}
 
+	getPopular(): Observable<IPostList> {
+		var postsUrl = environment.apiEndpoint + '/api/posts/popular';
+		return this.http.get<IPostList>(postsUrl).pipe(
+			tap(data => this.logMessage('Popular posts: ' + JSON.stringify(data))),
+			catchError(this.handleError)
+		);
+	}
+
 	getPost(slug: string): Observable<IPostModel> {
 		var url = environment.apiEndpoint + '/api/posts/byslug/' + slug;
 		return this.http.get<IPostModel>(url).pipe(

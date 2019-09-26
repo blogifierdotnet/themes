@@ -7,7 +7,6 @@
 
 	<div class="row masonry-wrap">
 		<div class="masonry">
-
 			<div class="grid-sizer"></div>
 
 			<article *ngFor="let post of model.posts" class="masonry__brick entry format-standard" data-aos="fade-up">
@@ -31,10 +30,10 @@
 						</span>
 					</div>
 				</div>
-			</article> <!-- end article -->
+			</article>
 
-		</div> <!-- end masonry -->
-	</div> <!-- end masonry-wrap -->
+		</div>
+	</div>
 
 	<div *ngIf="model.pager.showOlder || model.pager.showNewer" class="row">
 		<div class="col-full">
@@ -49,6 +48,6 @@
 		</div>
 	</div>
 
-</section> <!-- s-content -->
+</section>
 
 <app-footer></app-footer>
