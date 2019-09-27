@@ -1,3 +1,7 @@
+<div #pagetop class="pagetop"></div>
+<div class="go-top {{scrollVisible}}">
+		<a class="smoothscroll" title="Back to Top" (click)="scrollToElement(pagetop, $event)" href=""></a>
+	</div>
 <header *ngIf="settings" class="header">
 	<div class="header__content row">
 

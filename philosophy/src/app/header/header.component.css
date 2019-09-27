@@ -2,3 +2,8 @@
 	width: auto;
 	height: 48px;
 }
+
+.pagetop{
+	position: absolute;
+	top: 0;
+}

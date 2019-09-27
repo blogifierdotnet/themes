@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { BlogService, IBlogSettings } from '../core/blog.service';
+import { HostListener} from "@angular/core";
 
 @Component({
 	selector: 'app-header',
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
 	root: string;
 	settings: IBlogSettings;
+	scrollVisible: string;
 
 	ngOnInit() {
 		this.root = environment.apiEndpoint;
@@ -52,4 +54,21 @@ export class HeaderComponent implements OnInit {
 		}
 	}
 
+	@HostListener("window:scroll", []) onWindowScroll() {
+		var doc = document.documentElement;
+		var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+
+		if (top >= 500){
+			this.scrollVisible = 'link-is-visible';
+		}
+		else{
+			this.scrollVisible = '';
+		}
+	}
+
+	scrollToElement($element, e): void {
+		e.preventDefault();
+    e.stopPropagation();
+    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
 }
