@@ -1,17 +1,18 @@
 <section *ngIf="settings" class="s-extra">
 	<div class="row top">
 
-		<div  class="col-eight md-six tab-full popular">
+		<div class="col-eight md-six tab-full popular">
 			<h3>Popular Posts</h3>
 
 			<div *ngIf="popular" class="block-1-2 block-m-full popular__posts">
-				<article *ngFor="let post of popular.posts" class="col-block popular__post">
+				<article *ngFor="let post of popular.posts | slice:0:4; let i=index" class="col-block popular__post">
 					<a href="posts/{{post.slug}}" class="popular__thumb">
 						<img src="{{root}}/{{post.cover}}" alt="">
 					</a>
 					<h5><a href="posts/{{post.slug}}">{{post.title}}</a></h5>
 					<section class="popular__meta">
-						<span class="popular__author"><span>By</span> <a href="?author={{post.author.appUserName}}"> {{post.author.displayName}} </a></span>
+						<span class="popular__author"><span>By</span> <a href="?author={{post.author.appUserName}}">
+								{{post.author.displayName}} </a></span>
 						<span class="popular__date"><span> on </span> <time>{{post.published | date :'longDate'}}</time></span>
 					</section>
 				</article>
@@ -21,27 +22,13 @@
 		<div class="col-four md-six tab-full about">
 			<h3>About {{settings.title}}</h3>
 
-			<p>
-				Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id
-				orci porta dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-				Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Quisque velit nisi, pretium ut
-				lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
-			</p>
+			<p>{{settings.description}}</p>
 
-			<ul class="about__social">
-				<li>
-					<a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			<ul *ngIf="social" class="about__social">
+				<li *ngFor="let btn of social">
+					<a href="{{btn.link}}"><i class="fa {{btn.icon}}" aria-hidden="true"></i></a>
 				</li>
-				<li>
-					<a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-				</li>
-				<li>
-					<a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-				</li>
-				<li>
-					<a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-				</li>
-			</ul> <!-- end header__social -->
+			</ul>
 		</div>
 
 	</div>
@@ -56,7 +43,7 @@
 	</div>
 </section>
 
-<footer class="s-footer">
+<footer *ngIf="settings" class="s-footer">
 
 	<div class="s-footer__main">
 		<div class="row">
@@ -107,35 +94,17 @@
 			</div> <!-- end s-footer__social -->
 
 			<div class="col-five md-full end s-footer__subscribe">
-
-				<h4>Our Newsletter</h4>
-
-				<p>Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim
-					exercitationem ipsam. Culpa consequatur occaecati.</p>
-
-				<div class="subscribe-form">
-					<form id="mc-form" class="group" novalidate="true">
-
-						<input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address"
-							required="">
-
-						<input type="submit" name="subscribe" value="Send">
-
-						<label for="mc-email" class="subscribe-message"></label>
-
-					</form>
-				</div>
-
-			</div> <!-- end s-footer__subscribe -->
+				<app-newsletter></app-newsletter>
+			</div>
 
 		</div>
-	</div> <!-- end s-footer__main -->
+	</div>
 
 	<div class="s-footer__bottom">
 		<div class="row">
 			<div class="col-full">
 				<div class="s-footer__copyright">
-					<span>© Copyright Philosophy 2018</span>
+					<span>© Copyright {{settings.title}} {{dt | date: 'yyyy'}}</span>
 					<span>Site Template by <a href="https://colorlib.com/">Colorlib</a></span>
 				</div>
 
@@ -144,6 +113,6 @@
 				</div>
 			</div>
 		</div>
-	</div> <!-- end s-footer__bottom -->
+	</div>
 
 </footer>
