@@ -54,6 +54,24 @@ export class HeaderComponent implements OnInit {
 		}
 	}
 
+	onMenuToggle(e) {
+		var siteBody = document.body;		
+		e.preventDefault();
+		e.stopPropagation();
+
+		siteBody.classList.add('nav-wrap-is-visible');
+	}
+
+	onCloseNavWrap(e) {
+		var siteBody = document.body;
+		e.preventDefault();
+		e.stopPropagation();
+
+		if (siteBody.classList.contains('nav-wrap-is-visible')) {
+			siteBody.classList.remove('nav-wrap-is-visible');
+		}
+	}
+
 	@HostListener("window:scroll", []) onWindowScroll() {
 		var doc = document.documentElement;
 		var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
