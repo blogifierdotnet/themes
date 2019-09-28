@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService, IPostList } from '../core/blog.service';
 import { environment } from '../../environments/environment';
+import * as AOS from 'aos';
 
 @Component({
 	selector: 'app-home',
@@ -18,5 +19,6 @@ export class HomeComponent implements OnInit {
 		this.blogService.getPosts().subscribe(
 			result => { this.model = result; }
 		);
+		AOS.init();
 	}
 }

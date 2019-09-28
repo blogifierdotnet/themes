@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.1.0",
     "@angular/platform-browser-dynamic": "~8.1.0",
     "@angular/router": "~8.1.0",
+    "aos": "^2.3.4",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "ngx-disqus": "^2.4.3",
