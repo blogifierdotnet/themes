@@ -31,7 +31,7 @@
 						<h1><a href="posts/{{f2.slug}}" title="">{{f2.title}}</a></h1>
 						<div class="entry__info">
 							<a href="posts/{{f2.slug}}" class="entry__profile-pic">
-								<img class="avatar" src="assets/images/avatars/user-03.jpg" alt="">
+								<img class="avatar" src="{{root}}/{{f2.author.avatar}}" alt="">
 							</a>
 							<ul class="entry__meta">
 								<li><a href="?author={{f2.author.appUserName}}">{{f2.author.displayName}}</a></li>
@@ -48,7 +48,7 @@
 						<h1><a href="posts/{{f3.slug}}" title="">{{f3.title}}</a></h1>
 						<div class="entry__info">
 							<a href="posts/{{f2.slug}}" class="entry__profile-pic">
-								<img class="avatar" src="assets/images/avatars/user-03.jpg" alt="">
+								<img class="avatar" src="{{root}}/{{f3.author.avatar}}" alt="">
 							</a>
 							<ul class="entry__meta">
 								<li><a href="?author={{f3.author.appUserName}}">{{f3.author.displayName}}</a></li>

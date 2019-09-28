@@ -6,34 +6,40 @@
 <section *ngIf="model" class="s-content">
 
 	<div class="row masonry-wrap">
-		<div class="masonry">
+		<ngx-masonry class="masonry" [options]="masonryOptions" [useImagesLoaded]="true">
+
 			<div class="grid-sizer"></div>
+			<div ngxMasonryItem *ngFor="let post of model.posts">
+				<article class="masonry__brick entry format-standard" data-aos="fade-up">
 
-			<article *ngFor="let post of model.posts" class="masonry__brick entry format-standard" data-aos="fade-up">
-				<div class="entry__thumb">
-					<a href="posts/{{post.slug}}" class="entry__thumb-link">
-						<img src="{{root}}/{{post.cover}}" srcset="{{root}}/{{post.cover}} 1x, {{root}}/{{post.cover}} 2x" alt="">
-					</a>
-				</div>
-				<div class="entry__text">
-					<div class="entry__header">
-						<div class="entry__date">
-							<a href="posts/{{post.slug}}">{{post.published | date :'longDate'}}</a>
+					<div class="entry__thumb">
+						<a href="posts/{{post.slug}}" class="entry__thumb-link">
+							<img src="{{root}}/{{post.cover}}" alt="">
+						</a>
+					</div>
+					<div class="entry__text">
+						<div class="entry__header">
+							<div class="entry__date">
+								<a href="posts/{{post.slug}}">{{post.published | date :'longDate'}}</a>
+							</div>
+							<h1 class="entry__title"><a href="posts/{{post.slug}}">{{post.title}}</a></h1>
 						</div>
-						<h1 class="entry__title"><a href="posts/{{post.slug}}">{{post.title}}</a></h1>
+						<div [innerHTML]="post.description" class="entry__excerpt">
+						</div>
+						<div class="entry__meta">
+							<span *ngIf="post.categories" class="entry__meta-links">
+								<a *ngFor="let tag of post.categories.split(',')" href="?category={{tag}}">{{tag}}</a>
+							</span>
+						</div>
 					</div>
-					<div [innerHTML]="post.description" class="entry__excerpt">
-					</div>
-					<div class="entry__meta">
-						<span *ngIf="post.categories" class="entry__meta-links">
-							<a *ngFor="let tag of post.categories.split(',')" href="?category={{tag}}">{{tag}}</a>
-						</span>
-					</div>
-				</div>
-			</article>
 
-		</div>
+				</article>
+			</div>
+
+		</ngx-masonry>
 	</div>
+
+
 
 	<div *ngIf="model.pager.showOlder || model.pager.showNewer" class="row">
 		<div class="col-full">

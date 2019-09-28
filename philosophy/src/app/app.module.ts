@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule }   from '@angular/forms';
 import { DisqusModule } from 'ngx-disqus';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -41,7 +42,8 @@ import { FeaturedComponent } from './featured/featured.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+		FormsModule,
+		NgxMasonryModule,
     DisqusModule.forRoot('rturnet')
   ],
   providers: [],

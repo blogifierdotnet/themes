@@ -87,7 +87,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+desandro-matches-selector
+MIT
+
+ev-emitter
+MIT
+
+fizzy-ui-utils
+MIT
+
+get-size
+MIT
+
+imagesloaded
+MIT
+
+masonry-layout
+MIT
+
 ngx-disqus
+MIT
+
+ngx-masonry
+MIT
+
+outlayer
 MIT
 
 rxjs
