@@ -13,21 +13,25 @@ export class HomeComponent implements OnInit {
 
 	model: IPostList;
 	root: string;
-	constructor(private blogService: BlogService) { }
+	masonryOptions: NgxMasonryOptions;
 
-	public masonryOptions: NgxMasonryOptions = {
-		transitionDuration: '0.2s',
-		gutter: 0,
-		resize: true,
-		initLayout: true,
-		fitWidth: true
-	};
+	constructor(private blogService: BlogService) { }
 
 	ngOnInit() {
 		this.root = environment.apiEndpoint;
 		this.blogService.getPosts().subscribe(
 			result => { this.model = result; }
 		);
+
+		this.masonryOptions = {
+			transitionDuration: '0.2s',
+			gutter: 0,
+			resize: true,
+			initLayout: true,
+			fitWidth: true,
+			horizontalOrder: true
+		};
+
 		AOS.init();
 	}
 }

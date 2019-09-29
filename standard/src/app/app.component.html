@@ -1,10 +1,10 @@
-<header class="blog-header d-flex flex-column">
+<header *ngIf="settings" class="blog-header d-flex flex-column">
   <div class="container d-flex">
     <a href="/" class="blog-logo my-auto d-flex">
-      <img src="assets/img/logo-white.png" alt="Blog Title" class="my-auto" />
+      <img src="{{root}}/{{settings.logo}}" alt="{{settings.title}}" class="my-auto" />
     </a>
-    <ul *ngIf="socialButtons" class="blog-social nav ml-auto my-auto">   
-      <li *ngFor="let btn of socialButtons" class="blog-social-item">
+    <ul *ngIf="social" class="blog-social nav ml-auto my-auto">   
+      <li *ngFor="let btn of social" class="blog-social-item">
         <a href="{{btn.link}}" target="_blank" class="blog-social-link">
           <i class="blog-social-icon fa {{btn.icon}}"></i>
         </a>

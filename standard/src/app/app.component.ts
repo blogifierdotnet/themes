@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogService, IBlogSettings } from './core/blog.service';
+import { environment } from '../environments/environment';
 import { NgForm } from '@angular/forms';
 import data from '../assets/data.json';
 
@@ -7,13 +9,24 @@ import data from '../assets/data.json';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'standard';
-  public socialButtons: object;
+export class AppComponent implements OnInit {
+
+	constructor(private blogService: BlogService) { }
+
+	title = 'standard';
+	root: string;
+	social: object;
+	settings: IBlogSettings;
   
   ngOnInit(): void {
-    this.socialButtons = data.socialButtons;
-    // console.log("Json data : ", JSON.stringify(data));
+		this.root = environment.apiEndpoint + '/';
+
+    this.social = data.socialButtons;
+		console.log("Social buttons : ", JSON.stringify(data));	
+
+		this.blogService.getSettings().subscribe(
+			result => { this.settings = result; }
+		);
   }
 
   onSubmit(f: NgForm) {

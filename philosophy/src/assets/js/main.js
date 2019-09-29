@@ -55,28 +55,6 @@
 	};
 
 
-	/* Masonry
-	 * ---------------------------------------------------- */
-	var clMasonryFolio = function () {
-
-		var containerBricks = $('.masonry');
-
-		containerBricks.imagesLoaded(function () {
-			containerBricks.masonry({
-				itemSelector: '.masonry__brick',
-				percentPosition: true,
-				resize: true
-			});
-		});
-
-
-		// layout Masonry after each image loads
-		containerBricks.imagesLoaded().progress(function () {
-			containerBricks.masonry('layout');
-		});
-	};
-
-
 	/* Placeholder Plugin Settings
 	 * ------------------------------------------------------ */
 	var clPlaceholder = function () {
@@ -101,7 +79,6 @@
 
 		clPreloader();
 		clPrettyPrint();
-		clMasonryFolio();
 		clPlaceholder();
 		clAlertBoxes();
 	})();

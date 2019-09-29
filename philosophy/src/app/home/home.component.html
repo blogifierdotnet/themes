@@ -6,11 +6,12 @@
 <section *ngIf="model" class="s-content">
 
 	<div class="row masonry-wrap">
-		<ngx-masonry class="masonry" [options]="masonryOptions" [useImagesLoaded]="true">
+		<ngx-masonry class="masonry" [options]="masonryOptions" [useImagesLoaded]="true"
+			[updateLayout]="updateMasonryLayout">
 
 			<div class="grid-sizer"></div>
-			<div ngxMasonryItem *ngFor="let post of model.posts">
-				<article class="masonry__brick entry format-standard" data-aos="fade-up">
+			<div ngxMasonryItem *ngFor="let post of model.posts" data-aos="fade-up" data-aos-once="true">
+				<article class="masonry__brick entry format-standard">
 
 					<div class="entry__thumb">
 						<a href="posts/{{post.slug}}" class="entry__thumb-link">
