@@ -19,10 +19,11 @@ export class AppComponent implements OnInit {
 	settings: IBlogSettings;
   
   ngOnInit(): void {
-		this.root = environment.apiEndpoint + '/';
+		this.root = environment.apiEndpoint;
 
-    this.social = data.socialButtons;
-		console.log("Social buttons : ", JSON.stringify(data));	
+		this.blogService.getThemeData().subscribe(
+			result => { this.social = result.socialButtons; }
+		);
 
 		this.blogService.getSettings().subscribe(
 			result => { this.settings = result; }
