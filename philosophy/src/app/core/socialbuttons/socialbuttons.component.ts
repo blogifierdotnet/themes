@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import data from '../../../assets/data.json'
+import { BlogService } from '../../core/blog.service';
 
 @Component({
   selector: 'app-socialbuttons',
@@ -8,12 +8,13 @@ import data from '../../../assets/data.json'
 })
 export class SocialbuttonsComponent implements OnInit {
 
-	constructor() { }
+	constructor(private blogService: BlogService) { }
 	
-	socialButtons: object;
+	social: object;
 
   ngOnInit() {
-		this.socialButtons = data.socialButtons;
+		this.blogService.getThemeData().subscribe(
+			result => { this.social = result.socialButtons; }
+		);
   }
-
 }

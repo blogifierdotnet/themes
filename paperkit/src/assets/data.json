@@ -1,6 +1,4 @@
 {
-  "themeTitle": "Paper Kit",
-  "themeDescription": "This great theme is courtesy of CreativeTim (https://demos.creative-tim.com/paper-kit-2-angular)  and was adopted for Blogifier to showcase Angular CLI application.",
   "socialButtons": [
     {
       "link": "https://twitter.com/blogifierdotnet",
@@ -19,7 +17,13 @@
       "icon": "fa-github",
       "name": "GitHub",
       "title": "Star on GitHub"
-    },
+		},
+		{
+      "link": "https://www.youtube.com/channel/UCUcjrWFdIb2z0gd3vN2fAmw",
+			"icon": "fa-youtube",
+			"name": "Youtube",
+			"title": "Watch on Youtube"
+		},
     {
       "link": "/feed/rss",
       "icon": "fa-rss",

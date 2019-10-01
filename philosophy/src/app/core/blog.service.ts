@@ -4,6 +4,7 @@
 // Version 1.0.2 - added categories
 // Version 1.0.3 - added recent posts
 // Version 1.0.4 - added featured posts
+// Version 1.0.5 - added theme data
 //
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -121,6 +122,10 @@ export class BlogService {
 		return this.http.post<void>(url, contact).pipe(
 			catchError(this.handleError)
 		);
+	}
+
+	getThemeData(): Observable<any> {
+		return this.http.get(environment.themeData);
 	}
 
 	// simple alert, customize for your needs here

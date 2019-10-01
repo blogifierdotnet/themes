@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService, IBlogSettings } from './core/blog.service';
 import { environment } from '../environments/environment';
 import { NgForm } from '@angular/forms';
-import data from '../assets/data.json';
 
 @Component({
   selector: 'app-root',
