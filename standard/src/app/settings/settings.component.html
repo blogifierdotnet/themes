@@ -1,0 +1,22 @@
+<ng-template [ngIf]="settings">
+	<div class="page-cover" [ngStyle]="{'background-image':'url(' + root + '/' + settings.cover + ')'}">
+		<h1 class="page-cover-title">
+			<a href="/">{{settings.title}}</a>
+		</h1>
+		<p class="page-cover-desc">{{settings.description}}</p>
+	</div>
+	<div class="page-content">
+		<div class="container">
+			<h4>Social Buttons</h4>
+			<form (ngSubmit)="onSubmit()" class="form-horizontal">
+				<div class="form-group">
+					<input id="name" name="name" [(ngModel)]="txtName" class="form-control">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-secondary btn-lg">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<app-footer></app-footer>
+</ng-template>

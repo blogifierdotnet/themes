@@ -16,6 +16,7 @@ import { CategoriesComponent } from './core/categories/categories.component';
 import { RecentpostsComponent } from './core/recentposts/recentposts.component';
 import { SearchComponent } from './core/search/search.component';
 import { SocialbuttonsComponent } from './core/socialbuttons/socialbuttons.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SocialbuttonsComponent } from './core/socialbuttons/socialbuttons.compo
 		CategoriesComponent,
 		RecentpostsComponent,
 		SearchComponent,
-		SocialbuttonsComponent
+		SocialbuttonsComponent,
+		SettingsComponent
   ],
   imports: [
     BrowserModule,
