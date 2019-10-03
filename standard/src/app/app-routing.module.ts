@@ -5,17 +5,25 @@ import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SettingsComponent } from './settings/settings.component';
+import { LoginComponent } from './core/login/login.component';
+import { AuthGuard } from './core/auth.guard';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, 
+	{ path: '', component: HomeComponent },
 	{ path: 'posts/:slug', component: PostsComponent },
-	{ path: 'settings', component: SettingsComponent }, 
-  { path: '**', component: NotfoundComponent }
+	{ path: 'login', component: LoginComponent },
+	{
+		path: 'settings',
+		component: SettingsComponent,
+		canActivate: [AuthGuard],
+		data: { claimType: 'isAdmin' }
+	},
+	{ path: '**', component: NotfoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule { }

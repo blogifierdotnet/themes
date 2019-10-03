@@ -9,7 +9,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
@@ -18,6 +18,8 @@ import { environment } from '../../environments/environment';
 })
 export class BlogService {
 	constructor(private http: HttpClient, private route: ActivatedRoute) { }
+
+	securityObject: AppUserAuth = new AppUserAuth();
 
 	getPosts(): Observable<IPostList> {
 		var postsUrl = environment.apiEndpoint + '/api/posts?include=FP&page=1';
@@ -128,6 +130,38 @@ export class BlogService {
 		return this.http.get(environment.themeData);
 	}
 
+	login(entity: AppUser): Observable<AppUserAuth> {
+		this.resetSecurityObject();
+
+		var user = {
+			userName: entity.userName,
+			bearerToken: "abi393kdkd9393ikd",
+			isAuthenticated: true,
+			isAdmin: entity.userName == 'admin' ? true : false
+		}
+  
+    Object.assign(this.securityObject, user);
+															 
+    if (this.securityObject.userName !== "") {
+      localStorage.setItem("bearerToken",
+         this.securityObject.bearerToken);
+    }
+  
+    return of<AppUserAuth>(this.securityObject);
+  }
+
+	logout(): void {
+    this.resetSecurityObject();
+  }
+
+	resetSecurityObject(): void {
+		this.securityObject.userName = "";
+		this.securityObject.bearerToken = "";
+		this.securityObject.isAuthenticated = false;
+		this.securityObject.isAdmin = false;
+		localStorage.removeItem("bearerToken");
+	}
+
 	// simple alert, customize for your needs here
 	// for example, display toastr notification etc
 	showMessage(msg: string, reload: boolean = false) {
@@ -224,4 +258,16 @@ export interface IContact {
 export interface ICategoryItem {
 	category: string;
 	PostCount: number;
+}
+
+export class AppUser {
+	userName: string = "";
+	password: string = "";
+}
+
+export class AppUserAuth {
+	userName: string = "";
+	bearerToken: string = "";
+	isAuthenticated: boolean = false;
+	isAdmin: boolean = false;
 }

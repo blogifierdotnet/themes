@@ -1,0 +1,69 @@
+<ng-template [ngIf]="settings">
+	<div class="page-cover" [ngStyle]="{'background-image':'url(' + root + '/' + settings.cover + ')'}">
+		<h1 class="page-cover-title">
+			<a href="/">{{settings.title}}</a>
+		</h1>
+		<p class="page-cover-desc">{{settings.description}}</p>
+	</div>
+	<div class="page-content">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="alert alert-danger" *ngIf="securityObject &&
+								 !securityObject.isAuthenticated">
+						<p>Invalid User Name/Password.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- TEMPORARY CODE TO VIEW SECURITY OBJECT -->
+			<div class="row">
+				<div class="col-xs-12">
+					<label>{{securityObject | json}}</label>
+				</div>
+			</div>
+
+			<form>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Log in</h3>
+							</div>
+							<div class="panel-body">
+								<div class="form-group">
+									<label for="userName">User Name</label>
+									<div class="input-group">
+										<input id="userName" name="userName" class="form-control" required [(ngModel)]="user.userName"
+											autofocus="autofocus" />
+										<span class="input-group-addon">
+											<i class="fa fa-user"></i>
+										</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="password">Password</label>
+									<div class="input-group">
+										<input id="password" name="password" class="form-control" required [(ngModel)]="user.password"
+											type="password" />
+										<span class="input-group-addon">
+											<i class="fa fa-lock"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="panel-footer">
+								<button class="btn btn-primary" (click)="login()">
+									Login
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+	<app-footer></app-footer>
+</ng-template>

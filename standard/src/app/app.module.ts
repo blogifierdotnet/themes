@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './core/auth.guard';
 
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
@@ -17,6 +18,7 @@ import { RecentpostsComponent } from './core/recentposts/recentposts.component';
 import { SearchComponent } from './core/search/search.component';
 import { SocialbuttonsComponent } from './core/socialbuttons/socialbuttons.component';
 import { SettingsComponent } from './settings/settings.component';
+import { LoginComponent } from './core/login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { SettingsComponent } from './settings/settings.component';
 		RecentpostsComponent,
 		SearchComponent,
 		SocialbuttonsComponent,
-		SettingsComponent
+		SettingsComponent,
+		LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { SettingsComponent } from './settings/settings.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
