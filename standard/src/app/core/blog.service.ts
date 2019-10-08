@@ -5,6 +5,7 @@
 // Version 1.0.3 - added recent posts
 // Version 1.0.4 - added featured posts
 // Version 1.0.5 - added theme data
+// Version 1.0.6 - added get user
 //
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -130,37 +131,12 @@ export class BlogService {
 		return this.http.get(environment.themeData);
 	}
 
-	login(entity: AppUser): Observable<AppUserAuth> {
-		this.resetSecurityObject();
-
-		var user = {
-			userName: entity.userName,
-			bearerToken: "abi393kdkd9393ikd",
-			isAuthenticated: true,
-			isAdmin: entity.userName == 'admin' ? true : false
-		}
-  
-    Object.assign(this.securityObject, user);
-															 
-    if (this.securityObject.userName !== "") {
-      localStorage.setItem("bearerToken",
-         this.securityObject.bearerToken);
-    }
-  
-    return of<AppUserAuth>(this.securityObject);
+	getUser(): Observable<AppUserAuth> {
+		var url = environment.apiEndpoint + '/api/security/user';
+		return this.http.get<AppUserAuth>(url).pipe(
+			catchError(this.handleError)
+		);
   }
-
-	logout(): void {
-    this.resetSecurityObject();
-  }
-
-	resetSecurityObject(): void {
-		this.securityObject.userName = "";
-		this.securityObject.bearerToken = "";
-		this.securityObject.isAuthenticated = false;
-		this.securityObject.isAdmin = false;
-		localStorage.removeItem("bearerToken");
-	}
 
 	// simple alert, customize for your needs here
 	// for example, display toastr notification etc
@@ -267,7 +243,6 @@ export class AppUser {
 
 export class AppUserAuth {
 	userName: string = "";
-	bearerToken: string = "";
 	isAuthenticated: boolean = false;
 	isAdmin: boolean = false;
 }

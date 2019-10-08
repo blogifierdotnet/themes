@@ -5,14 +5,11 @@ import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SettingsComponent } from './settings/settings.component';
-import { LoginComponent } from './core/login/login.component';
 import { AuthGuard } from './core/auth.guard';
-
 
 const routes: Routes = [
 	{ path: '', component: HomeComponent },
 	{ path: 'posts/:slug', component: PostsComponent },
-	{ path: 'login', component: LoginComponent },
 	{
 		path: 'settings',
 		component: SettingsComponent,

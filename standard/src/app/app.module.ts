@@ -18,7 +18,6 @@ import { RecentpostsComponent } from './core/recentposts/recentposts.component';
 import { SearchComponent } from './core/search/search.component';
 import { SocialbuttonsComponent } from './core/socialbuttons/socialbuttons.component';
 import { SettingsComponent } from './settings/settings.component';
-import { LoginComponent } from './core/login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,7 @@ import { LoginComponent } from './core/login/login.component';
 		RecentpostsComponent,
 		SearchComponent,
 		SocialbuttonsComponent,
-		SettingsComponent,
-		LoginComponent
+		SettingsComponent
   ],
   imports: [
     BrowserModule,
