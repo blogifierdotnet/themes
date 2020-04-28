@@ -17,7 +17,7 @@
 					<a class="post-meta-author" href="?author={{post.author.appUserName}}">{{post.author.displayName}}</a>
 					<time class="post-meta-time">/ {{toDate(post.published)}}</time>
 				</div>
-				<div [innerHTML]="post.description" class="post-description"></div>
+				<div [innerHTML]="post.description | safe: 'html'" class="post-description"></div>
 				<a class="post-more btn btn-rounded btn-dark" href="posts/{{post.slug}}">Read</a>
 			</article>
 		</div>

@@ -19,7 +19,7 @@
             </ng-template>
           </div>
         </header>
-        <div [innerHTML]="postModel.post.content" class="post-content"></div>
+        <div [innerHTML]="postModel.post.content | safe: 'html'" class="post-content"></div>
 
         <ul *ngIf="postModel.older || postModel.newer" class="pagination justify-content-center">
           <li *ngIf="postModel.older" class="item item-prev">
